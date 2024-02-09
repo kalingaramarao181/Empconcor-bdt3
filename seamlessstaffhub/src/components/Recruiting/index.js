@@ -180,7 +180,7 @@ class Recruiting extends Component{
                     <p className="cp-description">By clicking "See Rippling" you agree to Rippling's Privacy Notice</p>
                 </div>
                 <div>
-                    <img className="office-img" src="https://t4.ftcdn.net/jpg/03/84/55/29/360_F_384552930_zPoe9zgmCF7qgt8fqSedcyJ6C6Ye3dFs.jpg" />
+                    <img className="office-img" alt="office" src="https://t4.ftcdn.net/jpg/03/84/55/29/360_F_384552930_zPoe9zgmCF7qgt8fqSedcyJ6C6Ye3dFs.jpg" />
                 </div>
             </div>
             <ul className="rating-container">

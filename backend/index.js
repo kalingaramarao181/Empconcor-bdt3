@@ -16,7 +16,24 @@ const db = mysql.createConnection({
 })
 
 
-//ADMIN LOGIN API
+//HR LOGIN API
+app.post('/hrlogin', (req, res) => {
+    const {loginEmail, loginPassword} =  req.body
+    const sql = `SELECT * FROM hrdetails WHERE email = '${loginEmail}'`;
+    db.query(sql, (err, data) => {
+        if(data.length === 0){
+            res.json(false)
+            res.status(400)
+        }else{
+            if (data[0].password === loginPassword){
+                res.json(true)
+            }else{
+                res.json(false)
+            }
+        }
+    })
+})
+
 app.post('/login', (req, res) => {
     const {username, password} =  req.body
     const sql = `SELECT * FROM admin WHERE email = '${username}'`;
@@ -51,15 +68,14 @@ app.post('/user', (req, res) => {
     })
 })
 
-//POST ADMIN REGESTER API
-app.post('/admin', (req, res) => {
-    const sql = "INSERT INTO admin (`name`, `email`, `password`, `phone`, `country`, `compeny`) VALUES (?)";
+//POST HR REGESTER API
+app.post('/hrdetails', (req, res) => {
+    const sql = "INSERT INTO hrdetails (`name`, `email`, `password`, `phone`, `compeny`) VALUES (?)";
     const values = [
         req.body.name,
         req.body.email,
         req.body.password,
         req.body.phoneNo,
-        req.body.country,
         req.body.compeny,
     ]
     db.query(sql, [values], (err, data) => {
@@ -98,4 +114,3 @@ app.get("/user", (req, res) => {
     }
     ) 
 })
-//PRCTICE API

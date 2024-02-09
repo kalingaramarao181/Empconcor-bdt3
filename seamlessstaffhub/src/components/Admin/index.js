@@ -5,14 +5,11 @@ import {Link} from "react-router-dom"
 
 const Admin = () => {
   const [userData, setAdminData] = useState([]);
-  const [error, setError] = useState(null);
-
   useEffect(() => {
     axios.get('http://localhost:5000/user')
       .then(res => setAdminData(res.data))
       .catch(err => {
         console.error(err);
-        setError(err);
       });
   }, []);
  

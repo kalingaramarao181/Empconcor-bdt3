@@ -1,9 +1,7 @@
 import { Component } from "react";
 import "./index.css"
 import axios from "axios"
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
 import Cookies from "js-cookie";
-import { Redirect } from "react-router-dom";
 
 class LoginFarm extends Component{
 
@@ -21,7 +19,7 @@ class LoginFarm extends Component{
         axios.post("http://localhost:5000/login", {username, password})
         .then(res => {
           if (res.data){
-            history.replace("/admin")
+            history.replace("/hrr")
             Cookies.set("jwt_token", `${username}`, { expires: 30 });
           }else{
             this.setState({errorMsg: "User Not Found Please Enter valid Credentials"})

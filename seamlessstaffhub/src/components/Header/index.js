@@ -388,7 +388,6 @@ class Header extends Component{
 
     onClickLogin = () => {
         const {history} = this.props
-        const token = Cookies.get("jwt_token");
         this.setState({loginButtonStatus: false})
         history.replace("/login")
     }
@@ -417,7 +416,9 @@ class Header extends Component{
     return(
         <nav className="nav-main-container">
             <div className="nav-container">
-                <img className="nav-image" src="img\applogo.png" alt="head"/>
+                <Link to="/">
+                    <img className="nav-image" src="img\applogo.png" alt="head"/>
+                </Link>
                 <ul className="nav-items">
                     <li className="nav-item">
                         <button className="nav-button" onClick={this.onClickProducts} type="button">Products <MdOutlineProductionQuantityLimits /></button> 
