@@ -1,0 +1,36 @@
+.hr-Rt-bg2{
+  text-align: center;
+  background-image: url("https://media.istockphoto.com/id/1467509880/photo/hrm-or-human-resource-management-businessman-holding-magnifier-select-and-accept-to-manager.webp?b=1&s=170667a&w=0&k=20&c=DRAY1HEdxurmtTQlhqrE01J7a8Oc7gmz0l9cutK59xY=");
+  background-size: cover;
+  padding: 20px;
+
+}
+
+.Rt-head1{
+   font-family: "roboto";
+   font-weight: bold;
+   color: white;
+
+}
+.Rt-input1{
+    height: 50px;
+    width: 500px;
+    border-radius: 6px;
+    font-size: 20px;
+   margin-top: 20px;
+   padding: 10px;
+}
+.Rt-button1{
+    height: 50px;
+    width: 500px;
+    border-radius: 6px;
+    font-size: 20px;
+   margin-top: 20px;
+   background-color: #0088cc;
+   font-weight: bold;
+}
+.Rt-para1{
+    color: white;
+    padding-right:100px;
+    padding-top: 6px;
+}

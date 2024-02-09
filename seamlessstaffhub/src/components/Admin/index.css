@@ -1,0 +1,105 @@
+.admin-data{
+    border: 2px solid black;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    padding: 10px;
+    width: 300px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+}
+.add-admin-button{
+    padding: 20px;
+    border: none;
+    color: white;
+    font-size: 24px;
+    border-radius: 5px;
+    background-color: #405adb;
+    margin-bottom: 15px;
+
+}
+.admindata-container{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+   
+}
+
+.edit-button{
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-right: 15px;
+    background-color: #314706;
+    font-size: 20px;
+}
+
+.delete-button{
+    padding: 10px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-right: 15px;
+    background-color: #471313;
+    font-size: 20px;
+}
+
+.admin-name-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #c5c7b7;
+    margin-bottom: 10px;
+}
+.admin-profile{
+    border-radius: 50px;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: white;
+    background-color: #4d026e;
+    margin-right: 20px;
+}
+
+.admin-name{
+    font-size: 24px;
+}
+
+.admin-name-button-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #c5c7b7;
+    padding: 20px;
+}
+
+.db-item-name{
+    margin: 5px;
+}
+
+.db-item-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 100vw;
+    padding: 20px;
+}
+
+.signup-button{
+    padding: 20px;
+    border: none;
+    color: white;
+    font-size: 24px;
+    border-radius: 5px;
+    background-color: #8a6e0a;
+}
