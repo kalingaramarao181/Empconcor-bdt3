@@ -454,3 +454,17 @@
     background-color: transparent;
     border: none;
 }
+
+.hr-login-button{
+    background-color: #1a4eb8;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 20px;
+    padding: 10px;
+    margin-top: 30px;
+    cursor: pointer;
+}
+.hr-login-button:hover{
+    background-color: #316ade;
+}

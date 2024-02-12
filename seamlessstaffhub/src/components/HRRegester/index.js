@@ -123,7 +123,7 @@ class HRRegister extends Component {
                   <li>OFFER - ACCEPTED</li>
                   <li>ONBORDING</li>
                 </ul>
-                <Link to="/Employe">
+                <Link to="/admin">
                   <button className='AD-button2'>view more</button>
                 </Link>
               </div>

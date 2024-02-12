@@ -10,6 +10,8 @@ import Admin from "./components/Admin"
 import EditUser from "./components/EditUser"
 import HRRegister from './components/HRRegester';
 import ProtectedRoute from './components/ProtuctedRoute';
+import HrLogin from './components/HrLogin';
+import SendMail from './components/SendMail';
 
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 
@@ -29,6 +31,8 @@ const  App = () => {
           <ProtectedRoute path="/admin" exact component={Admin} />
           <Route path="/edit/:id" exact component={EditUser} />
           <ProtectedRoute path="/hrr" exact component={HRRegister} />
+          <Route path="/hrlogin" exact component={HrLogin} />
+          <Route path="/send-mail" exact component={SendMail} />
         </Switch>
     </BrowserRouter>
     )

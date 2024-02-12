@@ -100,6 +100,9 @@ class Header extends Component{
                     <h1 className="hrcloud-d-head">HR Cloud</h1>
                     <p className="hrcloud-d-desc">Manage and autonate the employe lifecycle</p>
                     <button className="hrcloud-d-button">Learn More</button>
+                    <Link to="hrlogin">
+                        <button type="button" className="hr-login-button">Login</button>
+                    </Link>
                 </div>
                 <div className="hrcloud-d-card-container">
                     <div className="hrcloud-d-item-container">
