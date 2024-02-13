@@ -70,6 +70,8 @@ app.post('/user', (req, res) => {
     })
 })
 
+
+
 //POST HR REGESTER API
 app.post('/hrdetails', (req, res) => {
     const sql = "INSERT INTO hrdetails (`name`, `email`, `password`, `phone`, `compeny`) VALUES (?)";
@@ -86,9 +88,40 @@ app.post('/hrdetails', (req, res) => {
     })
 })
 
+
+//POST USER TO INTERVIEW API
+app.post('/interviewdata', (req, res) => {
+    const sql = "INSERT INTO interviewdata (`accesscode`, `name`, `email`, `password`, `phone`, `country`, `company`) VALUES (?)";
+    const values = [
+        req.body.accesscode,
+        req.body.name,
+        req.body.email,
+        req.body.password,
+        req.body.phone,
+        req.body.country,
+        req.body.compeny,
+    ]
+    db.query(sql, [values], (err, data) => {
+        if(err) return  res.json(err)
+        return res.json(data)
+        console.log(data)
+    })
+})
+
+
 //DELETE USER API
 app.delete("/user/:id", (req, res) => {
     const sql = "DELETE FROM user WHERE id =  ?"
+    const id = req.params.id
+    db.query(sql, [id], (err, data) => {
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+//DELETE USER API
+app.delete("/interviewdata/:id", (req, res) => {
+    const sql = "DELETE FROM interviewdata WHERE id =  ?"
     const id = req.params.id
     db.query(sql, [id], (err, data) => {
         if(err) return res.json(err)
@@ -117,6 +150,16 @@ app.get("/hrdetails", (req, res) => {
         return res.json(data)
     }
     ) 
+})
+
+//GET INTERVIEW DATA
+app.get("/interviewdata", (req, res) => {
+    console.log(req.body)
+    const sql = `SELECT * FROM interviewdata`
+    db.query(sql, (err, data) => {
+        if (err) return res.json(err)
+        return res.json(data)
+    }) 
 })
 
 

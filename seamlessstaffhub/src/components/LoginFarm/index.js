@@ -20,7 +20,7 @@ class LoginFarm extends Component{
         .then(res => {
           if (res.data){
             history.replace("/hrr")
-            Cookies.set("jwt_token", `${username}`, { expires: 30 });
+            Cookies.set("jwt_token", `${username}`, { expires: 1 });
           }else{
             this.setState({errorMsg: "User Not Found Please Enter valid Credentials"})
             alert("User Not Found Please Enter valid Credentials")

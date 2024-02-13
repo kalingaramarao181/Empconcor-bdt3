@@ -18,7 +18,7 @@ class HrLogin extends Component {
         .then(res => {
             if (res.data){
                 history.replace("/hrr")
-                Cookies.set("jwt_token", `${email}`, { expires: 1 });
+                Cookies.set("jwt_token", `${email}`, { expires: 30 });
             }else{
                 alert("Please provide valid details")
             }

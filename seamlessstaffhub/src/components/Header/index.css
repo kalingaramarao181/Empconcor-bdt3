@@ -8,6 +8,8 @@
     background-color: #013b6b;
     margin-top: 10px;
     width: 100vw;
+    padding-right: 25px;
+    padding-left: 25px;
 }
 .nav-image{
     height: 60px;
@@ -155,7 +157,18 @@
     padding: 10px;
     width: 400px;
     height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
+
+.product-item-link{
+    color: rgb(8, 1, 1);
+    text-decoration: none;
+
+}
+
 .product-item:hover{
     background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ADpy2voO3tFNgVNIYPzWtwzevZgzvpXC8A&usqp=CAU");
     color: white;
@@ -206,11 +219,12 @@
     color: white;
 }
 
-.hrcloud-d-desc{
+.hrcloud-d-desc1{
     font-size: 20px;
     color: white;
     font-weight: 400;
     width: 300px;
+    align-self: flex-start;
 }
 
 .hrcloud-d-button{
@@ -433,20 +447,26 @@
 
 .logout-button{
     border: none;
-    padding: 20px;
-    font-size: 20px;
+    text-align: center;
+    width: 110px;
+    height: 40px;
+    font-size: 18px;
     color: white;
     border-radius: 5px;
     background-color: #0542a3;
+    margin-bottom: 15px;
 }
 
 .login-button{
     border: none;
-    padding: 20px;
-    font-size: 20px;
+    text-align: center;
+    width: 110px;
+    height: 40px;
+    font-size: 18px;
     color: white;
     border-radius: 5px;
-    background-color: #6e470a;
+    background-color: #0542a3;
+    margin-bottom: 15px;
     
 }
 

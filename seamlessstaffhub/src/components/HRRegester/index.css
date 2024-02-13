@@ -32,6 +32,12 @@
   font-family: "roboto";
   align-self: center;
 }
+.err-msg{
+  color: red;
+  font-size: 16px;
+  margin: 0px;
+  padding: 0px;
+}
 .AD-inputbox{
   height:50px;
   width:400px;

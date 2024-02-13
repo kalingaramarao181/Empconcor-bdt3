@@ -6,14 +6,17 @@ import Cookies from "js-cookie";
 
 const Admin = () => {
   let displayData = []
+  const [btnStatus, setBtnStatus] = useState(0)
   const [userData, setAdminData] = useState([]);
+  const [intDataDB, setIntDataDB] = useState([]);
   const [intData, setIntData] = useState([])
   const [offData, setOffData] = useState([])
   const [offAcpData, setOffAcpData] = useState([])
   const [hrData, setHRData] = useState([]);
   const [dataView, setDataView] = useState("APPLICATIONS")
   const token = Cookies.get("jwt_token");
-  console.log(token)
+
+  //GET USER DATA
   useEffect(() => {
     axios.get('http://localhost:5000/user')
       .then(res => setAdminData(res.data))
@@ -22,6 +25,7 @@ const Admin = () => {
       });
   }, []);
 
+  //GET HR DETAILS
   useEffect(() => {
     axios.get('http://localhost:5000/hrdetails')
       .then(res => setHRData(res.data))
@@ -29,7 +33,26 @@ const Admin = () => {
         console.error(err);
       });
   }, []);
+
+  //GET INTERVIEW DATA
+  useEffect(() => {
+    axios.get('http://localhost:5000/interviewdata')
+      .then(res =>{
+        let conData = []
+        for (let dbData of res.data){
+          if (dbData.accesscode === token){
+            conData.push(dbData)
+            setIntData(conData)
+            console.log(intData)
+          }
+        }
+      })
+      .catch(err => {
+        console.error(err);
+      });
+  }, []);
  
+  //CLICK TO DELETE USER FROM DATABASE
   const onClickDelete = async (id) => {
     try{
       await axios.delete("http://localhost:5000/user/"+id)
@@ -37,20 +60,43 @@ const Admin = () => {
     }catch(err){
       console.log(err)
     }
-    console.log("clicked")
   }
 
-  const onClickAddToInterview = (id) => {
+  const onClickIntDelete = async (id) => {
+    try{
+      await axios.delete("http://localhost:5000/interviewdata/"+id)
+      window.location.reload()
+    }catch(err){
+      console.log(err)
+    }
+  }
 
-  useEffect(() => {
-    axios.get('http://localhost:5000/user/' + id)
-      .then(res => setAdminData(res.data))
-      .catch(err => {
-        console.error(err);
-      });
-  }, []);
-}
+
+  const onClickAddToInterview = (id) => {
+    for (let eachItem of userData){
+      if (eachItem.id === id){
+        setIntDataDB(eachItem)
+        setBtnStatus(eachItem.id)
+      }
+    }
+  }
+
+  const onClickAddToInterviewSub = (id) => {
+    const accesscode = token
+    const {name, email, password, phone, compeny, country} = intDataDB
+    console.log(name, email, password, phone, compeny, country, accesscode)
+    axios.post("http://localhost:5000/interviewdata" , {name, email, password, phone, country, compeny, accesscode})
+    .then(res => {
+      alert("Successfully Added")
+      window.location.reload()
+    })
+    .catch(err => alert(err))
+  }
   
+
+
+
+
   
 
   let LoginHRIcon = null
@@ -78,7 +124,6 @@ const Admin = () => {
 
   return (
     <div className="admindata-container">
-      
       {(
         <>
         <div className="admin-name-button-container">
@@ -113,8 +158,10 @@ const Admin = () => {
                 <p className="db-item-name">Compeny Name: {user.compeny}</p><hr/>
                 <p className="db-item-name">Country Name: {user.country}</p><hr/>
               <div>
-                  <button type="button" className="edit-button" onClick={e => onClickAddToInterview(user.id)}>Send Mail</button>
-                  <button type="button" className="delete-button" onClick={e => onClickDelete(user.id)}>Delete User</button>
+                  {displayData !== "INTERVIEW" ? btnStatus === user.id ? <button type="button" className="edit-button" onClick={e => onClickAddToInterviewSub(user.id)}>Submit</button> : 
+                                            <button type="button" className="edit-button" onClick={e => onClickAddToInterview(user.id)}>Select</button>: null}
+                  {displayData === "INTERVIEW" ? <button type="button" className="delete-button" onClick={e => onClickDelete(user.id)}>Remove</button> : 
+                                                <button type="button" className="delete-button" onClick={e => onClickIntDelete(user.id)}>Remove</button>}
                 </div>
               </div>
               
@@ -123,8 +170,7 @@ const Admin = () => {
           </div>
         </>
       )}
-    </div>
-  );
-};
+    </div>)
+    }
 
 export default Admin;

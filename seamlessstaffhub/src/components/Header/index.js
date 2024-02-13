@@ -98,7 +98,7 @@ class Header extends Component{
                 <div className="hrcloud-d-card-container">
                     <img src="img\hrcloud.png" className="hrcloud-d-image" alt="hrcloud"/>
                     <h1 className="hrcloud-d-head">HR Cloud</h1>
-                    <p className="hrcloud-d-desc">Manage and autonate the employe lifecycle</p>
+                    <p className="hrcloud-d-desc1">Manage and autonate the employe lifecycle</p>
                     <button className="hrcloud-d-button">Learn More</button>
                     <Link to="hrlogin">
                         <button type="button" className="hr-login-button">Login</button>
@@ -206,7 +206,7 @@ class Header extends Component{
         return ( <button onClick={this.onClickToHiden} type="button" className="hiden-page-button">
         <ul className="products-card-container">
                     {productCardsList.map((eachItem) => (
-                    <Link className="" to={"/" + eachItem.uniqueId}>  
+                    <Link className="product-item-link" to={"/" + eachItem.uniqueId}>  
                         <li className="product-item">
                             <h1 className="preoduct-head">{eachItem.productName}</h1>
                             <p className="product-desc">{eachItem.content}</p>
@@ -225,7 +225,7 @@ class Header extends Component{
             <div className="hrcloud-d-card-container">
                 <img src="img\itcloud.png" className="hrcloud-d-image" alt="itcloud"/>
                 <h1 className="hrcloud-d-head">IT Cloud</h1>
-                <p className="hrcloud-d-desc">Remotly secure and configure your compeny's IT</p>
+                <p className="hrcloud-d-desc1">Remotly secure and configure your compeny's IT</p>
                 <button className="hrcloud-d-button">Learn More</button>
             </div>
             <div className="hrcloud-d-card-container">
@@ -258,7 +258,7 @@ class Header extends Component{
             <div className="hrcloud-d-card-container">
                 <img src="img\financecloud.webp" className="hrcloud-d-image" alt="financecloud"/>
                 <h1 className="hrcloud-d-head">Finance Cloud</h1>
-                <p className="hrcloud-d-desc">Control and report on your spend in one place</p>
+                <p className="hrcloud-d-desc1">Control and report on your spend in one place</p>
                 <button className="hrcloud-d-button">Learn More</button>
             </div>
             <div className="hrcloud-d-card-container">

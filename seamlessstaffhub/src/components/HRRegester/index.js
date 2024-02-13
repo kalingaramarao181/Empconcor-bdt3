@@ -20,6 +20,7 @@ class HRRegister extends Component {
     loginPassword: "",
     errorMsg: "",
     farmStatus: true,
+    errMsg:""
   }
 
   onChangeLoginEmail = (event) => {
@@ -58,6 +59,23 @@ class HRRegister extends Component {
     this.setState((prevState) => ({farmStatus: !prevState.farmStatus}))
   }
 
+  validateFarmData = () => {
+    const {name, email, password, phoneNo, compeny, errMsg} = this.state
+    if (name===""){
+      this.setState({errMsg: "Required Name"})
+    }else if (email===""){
+      this.setState({errMsg: "Required Email"})
+    }else if (password===""){
+      this.setState({errMsg: "Required Password"})
+    }else if (phoneNo===""){
+      this.setState({errMsg: "Required Phone No"})
+    }else if (compeny===""){
+      this.setState({errMsg: "Required Compeny"})
+    }else{
+      this.setState({errMsg: ""})
+    }
+  }
+
   submitLoginFarm =async event => {
     const {history} = this.props
     event.preventDefault()
@@ -75,25 +93,29 @@ class HRRegister extends Component {
     this.setState({loginEmail: "", loginPassword: ""})
   }
 
+  dataSendtoDB = () => {
+    
+  }
+
 
   submitRegesterFarm = (event) => {
     event.preventDefault()
+    this.validateFarmData()
+    this.dataSendtoDB()
     const {name, email, password, phoneNo, compeny} = this.state
-    console.log(name, email, password, phoneNo, compeny)
-    this.setState({name: "", email: "", password: "", phoneNo: "", compeny: ""})
-    console.log("SUBMITTED")
-
-    axios.post("http://localhost:5000/hrdetails" , {name, email, password, phoneNo, compeny})
-    .then(res => {
-      console.log(res.data)
-      alert("HR Regestered Successfully")
-    })
-    .catch(err => console.log(err))
-    console.log("on submit button clicked")
+    if (email !== "" && password !== "" && name!=="" && phoneNo !== ""){
+      axios.post("http://localhost:5000/hrdetails" , {name, email, password, phoneNo, compeny})
+      .then(res => {
+        console.log(res.data)
+        alert("HR Regestered Successfully")
+      })
+      .catch(err => console.log(err))
+      this.setState({name: "", email: "", password: "", phoneNo: "", compeny: ""})
+    }
   }
 
   render(){
-    const {name, email, password, phoneNo, compeny, farmStatus, loginEmail, loginPassword} = this.state
+    const {name, email, password, phoneNo, compeny, farmStatus, loginEmail, loginPassword, errMsg} = this.state
   return (
           <>
             <div className='AD-card1 d-flex flex-row'>
@@ -102,9 +124,10 @@ class HRRegister extends Component {
                 <h1 className='AD-head1'>HR REGISTRATION</h1> 
                 <input type="text" className='AD-inputbox' value={name} onChange={this.onChangeName} placeholder='Enter Your User Name'/>
                 <input type="text" className='AD-inputbox' value={email} onChange={this.onChangeEmail} placeholder='Enter Your Email'/>
-                <input type="text" className='AD-inputbox' value={phoneNo} onChange={this.onChangeNumber} placeholder='Enter Your Email'/>
+                <input type="text" className='AD-inputbox' value={phoneNo} onChange={this.onChangeNumber} placeholder='Enter Your Phone No'/>
                 <input type="password" className='AD-inputbox' value={password} onChange={this.onChangePassword} placeholder='Enter Your Password'/>
                 <input type="text" className='AD-inputbox' value={compeny} onChange={this.onChangeCompeny} placeholder='Enter Your Company Name'/>
+                <p className="err-msg">{errMsg}</p>
                 <button type="submit" className='AD-button1'>SUBMIT</button>
                 <button type="button" onClick={this.onClickLogin} className='AD-button-sb'>Login</button>
               </form> : <form className='AD-card21' onSubmit={this.submitLoginFarm}> 

@@ -75,7 +75,7 @@ const cloudCardList = [
         buttonText: "Learn More",
         altText: "icon6"
     },
-    {
+    /*{
         id:6,
         imgUrl: "https://e7.pngegg.com/pngimages/676/757/png-clipart-user-computer-icons-password-learning-management-system-computer-security-effecctive-compliance-program-elements-text-logo.png",
         title: "Learning Management",
@@ -122,7 +122,7 @@ const cloudCardList = [
         content: "Easily manage and stick to your global headcount plan.",
         buttonText: "Learn More",
         altText: "icon6"
-    }
+    }*/
 ]
 
 const hrCloudCardList = [
@@ -175,7 +175,7 @@ class Home extends Component{
                         <input className="input" type="text" onChange={this.onChangeEmail} placeHolder="What's your Email" />
                     </div>
                     <button className="cp-btn" type="button" onClick={this.onSubbmitButton}>Visit EmpConcor</button>
-                    <p className="cp-description">By clicking "See Rippling" you agree to Rippling's Privacy Notice</p>
+                    <p className="cp-description">By clicking "See Emp Concor" you agree to Emp Concor's Privacy Notice</p>
                 </div>
                 <div>
                     <img alt="office-2" className="office-img" src="https://t4.ftcdn.net/jpg/03/84/55/29/360_F_384552930_zPoe9zgmCF7qgt8fqSedcyJ6C6Ye3dFs.jpg" />
@@ -248,7 +248,7 @@ class Home extends Component{
                         <h1 className="ob-page-head2">Offboard employees in 90 seconds</h1>
                         <p className="ob-page-content">Every employee life event—from a promotion to a marriage—
                         creates a cascade of paperwork and related tasks. 
-                        Rippling automates this busy work so you can focus on the work-work.
+                        Emp Concor automates this busy work so you can focus on the work-work.
                         </p>
                     </div>
                     <div>
@@ -269,10 +269,10 @@ class Home extends Component{
             <div className="pageb-container">
             <p className="title">OVERVIEW</p>
             <h1 className="heading1">All your HR. One global HR platform.</h1>
-            <p>Rippling lets you manage and automate all of your people operations around the world in one place—from onboarding to offboarding.</p>
-            <img src="https://beedatatech.com/ripplingpics/shot1.png" alt="shot1" />
+            <p>Emp Concor lets you manage and automate all of your people operations around the world in one place—from onboarding to offboarding.</p>
+            <img src="https://beedatatech.com/Emp Concorpics/shot1.png" alt="shot1" />
             <img src="https://img.freepik.com/premium-photo/modern-office-space-with-desktops-with-modern-computers-created-with-generative-ai-technology_185193-110090.jpg" className="office-img" alt="office"/>
-            <img src="https://beedatatech.com/ripplingpics/shot2.png" alt="shot2" />
+            <img src="https://beedatatech.com/Emp Concorpics/shot2.png" alt="shot2" />
             <ul className="cloud-card-container">
                 {cloudCardList.map((eachItem) => (
                     <li className="list-item1">
@@ -288,12 +288,12 @@ class Home extends Component{
             <div className="page-c-part1">
                 <h1 className="page-c-head1">GLOBEL HRIS</h1>
                 <h1 className="page-c-head2">One HR system for your team <span className="span-el">every where</span></h1>
-                <p className="page-c-content">With Rippling, you can finally bring all of your employee 
+                <p className="page-c-content">With Emp Concor, you can finally bring all of your employee 
                     data from around the world into a single system. 
-                    Rippling dynamically localizes everything—from fields and 
+                    Emp Concor dynamically localizes everything—from fields and 
                     documents to currencies—based on work location.
                 </p>
-                <p className="page-c-about">Learn About Rippling for Globel Teams</p>
+                <p className="page-c-about">Learn About Emp Concor for Globel Teams</p>
             </div>
             <div>
                 <img className="global-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIYVb21mLflUjNUHraNPWk3q52fBh2A9AbAg&usqp=CAU" alt="globalImg" />
@@ -317,7 +317,7 @@ class Home extends Component{
             <div className="pageb-container">
             <p className="title">EMP CONCOR UNITY</p>
             <h1 className="title2">One source of truth for HR analytics, policies, and more</h1>
-            <p>Rippling connects all of your HR systems, so you can update, automate, and report on everything in a single unified platform.</p>
+            <p>Emp Concor connects all of your HR systems, so you can update, automate, and report on everything in a single unified platform.</p>
             <p>Learn More</p>
             <div className="hr-card-container">
                 <h1>HR Cloud</h1>
@@ -330,12 +330,12 @@ class Home extends Component{
                     ))}
                 </ul>
             </div>
-            <img src="https://beedatatech.com/ripplingpics/shot2.png" alt="shot2" />
+            <img src="https://beedatatech.com/Emp Concorpics/shot2.png" alt="shot2" />
             
             <div className="hr-bottom-card-container">
                 <img className="hr-bottom-icon" src="https://www.freeiconspng.com/uploads/letter-e-icon-png-22.png" alt="icon" />
-                <h1 className="hr-bottom-heading">Rippling Unity</h1>
-                <p className="hr-bottom-descreption">Built On the first unified workforse platform rippling has every add you need to Effrotlessly
+                <h1 className="hr-bottom-heading">Emp Concor Unity</h1>
+                <p className="hr-bottom-descreption">Built On the first unified workforse platform Emp Concor has every add you need to Effrotlessly
                     globel workforse from HR to IT.
                 </p>
             </div>

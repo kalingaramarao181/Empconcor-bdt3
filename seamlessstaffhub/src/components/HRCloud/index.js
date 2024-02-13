@@ -75,7 +75,7 @@ const cloudCardList = [
         buttonText: "Learn More",
         altText: "icon6"
     },
-    {
+    /*{
         id:6,
         imgUrl: "https://e7.pngegg.com/pngimages/676/757/png-clipart-user-computer-icons-password-learning-management-system-computer-security-effecctive-compliance-program-elements-text-logo.png",
         title: "Learning Management",
@@ -122,7 +122,7 @@ const cloudCardList = [
         content: "Easily manage and stick to your global headcount plan.",
         buttonText: "Learn More",
         altText: "icon6"
-    }
+    }*/
 ]
 
 const hrCloudCardList = [
@@ -334,7 +334,7 @@ class HRCloud extends Component{
             
             <div className="hr-bottom-card-container">
                 <img className="hr-bottom-icon" src="https://www.freeiconspng.com/uploads/letter-e-icon-png-22.png" alt="icon" />
-                <h1 className="hr-bottom-heading">Rippling Unity</h1>
+                <h1 className="hr-bottom-heading">EmpConcor Unity</h1>
                 <p className="hr-bottom-descreption">Built On the first unified workforse platform rippling has every add you need to Effrotlessly
                     globel workforse from HR to IT.
                 </p>

@@ -6,7 +6,7 @@
     align-items: flex-start;
     margin-bottom: 10px;
     padding: 10px;
-    width: 300px;
+    width: 250px;
     margin-right: 15px;
     margin-bottom: 15px;
 }
@@ -71,6 +71,7 @@
 
 .admin-name{
     font-size: 24px;
+    margin: 0px;
 }
 
 .admin-name-button-container{
