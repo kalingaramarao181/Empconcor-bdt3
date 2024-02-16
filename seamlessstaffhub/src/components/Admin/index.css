@@ -1,20 +1,15 @@
 .admin-data{
     border: 2px solid black;
-    border-radius: 10px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 10px;
     padding: 10px;
-    width: 250px;
-    margin-right: 15px;
-    margin-bottom: 15px;
+    width: 100vw;
+    border-radius: 15px;
 }
 .add-admin-button{
-    padding: 20px;
+    width: 180px;
+    height: 40px;
     border: none;
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     border-radius: 5px;
     background-color: #405adb;
     margin-bottom: 15px;
@@ -34,17 +29,36 @@
     border-radius: 5px;
     margin-right: 15px;
     background-color: #314706;
-    font-size: 20px;
+    font-size: 18px;
 }
 
-.delete-button{
+.edit-button-stop{
     padding: 10px;
     color: white;
     border: none;
     border-radius: 5px;
     margin-right: 15px;
-    background-color: #471313;
-    font-size: 20px;
+    background-color: #BBCE8E;
+    font-size: 18px;
+}
+
+.edit-button-check{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 15px;
+    font-size: 18px;
+    align-self: flex-end;
+    background-color: transparent;
+}
+
+.delete-button{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-right: 15px;
+    font-size: 18px;
+    background-color: transparent;
 }
 
 .admin-name-container{
@@ -57,20 +71,21 @@
 }
 .admin-profile{
     border-radius: 50px;
-    height: 50px;
-    width: 50px;
+    height: 70px;
+    width: 70px;
     text-align: center;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 24px;
+    font-size: 32px;
     color: white;
     background-color: #4d026e;
     margin-right: 20px;
 }
 
 .admin-name{
-    font-size: 24px;
+    font-size: 32px;
     margin: 0px;
 }
 
@@ -97,36 +112,39 @@
     padding: 20px;
     border: 1px solid black;
     border-radius: 10px;
-    width: 70vw;
 }
 
 .signup-button{
-    padding: 20px;
+    width: 180px;
+    height: 40px;
     border: none;
     color: white;
-    font-size: 24px;
+    font-size: 20px;
     border-radius: 5px;
     background-color: #8a6e0a;
 }
 
 .data-view-container{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     border: 1px solod black;
     border-radius: 10px;
     padding: 10px;
-    height: 400px;
+
 }
 
 .data-view-btn{
-    width: 350px;
-    height: 50px;
+    width: 320px;
+    height: 70px;
     text-align: center;
     background-color: transparent;
     font-size: 20px;
     margin-bottom: 15px;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
 }
 
 .data-total-view-container{
@@ -142,4 +160,24 @@
     border-radius: 5px;
     margin-left: 10px;
 }
+.table{
+    border-bottom: 1px solid black;
 
+}
+td{
+    padding: 10px;
+}
+th{
+    margin-bottom: 10px;
+    text-align: left;
+    background-color: #D8D7F1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.checkbox-ele{
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+}

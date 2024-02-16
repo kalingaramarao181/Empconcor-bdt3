@@ -76,54 +76,6 @@ const cloudCardList = [
         content: "Hourly employees can easily clock in and out, and their hours automatically sync.",
         buttonText: "Learn More",
         altText: "icon6"
-    },
-    {
-        id:6,
-        imgUrl: "https://e7.pngegg.com/pngimages/676/757/png-clipart-user-computer-icons-password-learning-management-system-computer-security-effecctive-compliance-program-elements-text-logo.png",
-        title: "Learning Management",
-        content: "Streamline employee training--from sexul harassment to security training",
-        buttonText: "Learn More",
-        altText: "icon6"
-    },
-    {
-        id:7,
-        imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRX0WQSgfI6kV-fJhyo5ISG3BQIkg5wgVmJmw&usqp=CAU",
-        title: "Talent Management",
-        content: "Source, recruit, and hire top talent faster.",
-        buttonText: "Learn More",
-        altText: "icon6"
-    },
-    {
-        id:8,
-        imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSI9tkqODdnD3nmgwUd9KlyR-Dspd0ZuNgbiw&usqp=CAU",
-        title: "PEO Services",
-        content: "Access better health insurence. dedicated HR support, automated state unemployment tax registration, and more.",
-        buttonText: "Learn More",
-        altText: "icon6"
-    },
-    {
-        id:9,
-        imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLpCUzrR96Nz2csPI7WnKFLAevcOAAKfMJ6Q&usqp=CAU",
-        title: "Global Employment",
-        content: "Hire, pay, and manage employees and contractors globally with unparalleled configurability by country.",
-        buttonText: "Learn More",
-        altText: "icon6"
-    },
-    {
-        id:10,
-        imgUrl: "https://cdn-icons-png.flaticon.com/512/340/340124.png",
-        title: "Pulse",
-        content: "Easily survey your employees and analyze their feedback.",
-        buttonText: "Learn More",
-        altText: "icon6"
-    },
-    {
-        id:11,
-        imgUrl: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0exbGikW2uEYc6OBNMVFcmoP0E6VLgSb76Q&usqp=CAU",
-        title: "Headcount Planning",
-        content: "Easily manage and stick to your global headcount plan.",
-        buttonText: "Learn More",
-        altText: "icon6"
     }
 ]
 
@@ -176,8 +128,8 @@ class Recruiting extends Component{
                         <p className="input-name">Email Address</p>
                         <input className="input" type="text" onChange={this.onChangeEmail} placeHolder="What's your Email" />
                     </div>
-                    <button className="cp-btn" type="button" onClick={this.onSubbmitButton}>See Rippling</button>
-                    <p className="cp-description">By clicking "See Rippling" you agree to Rippling's Privacy Notice</p>
+                    <button className="cp-btn" type="button" onClick={this.onSubbmitButton}>Visit EmpConcor</button>
+                    <p className="cp-description">By clicking "See EmpConcor" you agree to EmpConcor's Privacy Notice</p>
                 </div>
                 <div>
                     <img className="office-img" alt="office" src="https://t4.ftcdn.net/jpg/03/84/55/29/360_F_384552930_zPoe9zgmCF7qgt8fqSedcyJ6C6Ye3dFs.jpg" />
@@ -250,7 +202,7 @@ class Recruiting extends Component{
                         <h1 className="ob-page-head2">Offboard employees in 90 seconds</h1>
                         <p className="ob-page-content">Every employee life event—from a promotion to a marriage—
                         creates a cascade of paperwork and related tasks. 
-                        Rippling automates this busy work so you can focus on the work-work.
+                        EmpConcor automates this busy work so you can focus on the work-work.
                         </p>
                     </div>
                     <div>
@@ -271,10 +223,10 @@ class Recruiting extends Component{
             <div className="pageb-container">
             <p className="title">OVERVIEW</p>
             <h1 className="heading1">All your HR. One global HR platform.</h1>
-            <p>Rippling lets you manage and automate all of your people operations around the world in one place—from onboarding to offboarding.</p>
-            <img src="https://beedatatech.com/ripplingpics/shot1.png" alt="shot1" />
+            <p>EmpConcor lets you manage and automate all of your people operations around the world in one place—from onboarding to offboarding.</p>
+            <img src="https://beedatatech.com/EmpConcorpics/shot1.png" alt="shot1" />
             <img src="https://img.freepik.com/premium-photo/modern-office-space-with-desktops-with-modern-computers-created-with-generative-ai-technology_185193-110090.jpg" className="office-img" alt="office"/>
-            <img src="https://beedatatech.com/ripplingpics/shot2.png" alt="shot2" />
+            <img src="https://beedatatech.com/EmpConcorpics/shot2.png" alt="shot2" />
             <ul className="cloud-card-container">
                 {cloudCardList.map((eachItem) => (
                     <li className="list-item1">
@@ -290,12 +242,12 @@ class Recruiting extends Component{
             <div className="page-c-part1">
                 <h1 className="page-c-head1">GLOBEL HRIS</h1>
                 <h1 className="page-c-head2">One HR system for your team <span className="span-el">every where</span></h1>
-                <p className="page-c-content">With Rippling, you can finally bring all of your employee 
+                <p className="page-c-content">With EmpConcor, you can finally bring all of your employee 
                     data from around the world into a single system. 
-                    Rippling dynamically localizes everything—from fields and 
+                    EmpConcor dynamically localizes everything—from fields and 
                     documents to currencies—based on work location.
                 </p>
-                <p className="page-c-about">Learn About Rippling for Globel Teams</p>
+                <p className="page-c-about">Learn About EmpConcor for Globel Teams</p>
             </div>
             <div>
                 <img className="global-image" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRIYVb21mLflUjNUHraNPWk3q52fBh2A9AbAg&usqp=CAU" alt="globalImg" />
@@ -319,7 +271,7 @@ class Recruiting extends Component{
             <div className="pageb-container">
             <p className="title">EMP CONCOR UNITY</p>
             <h1 className="title2">One source of truth for HR analytics, policies, and more</h1>
-            <p>Rippling connects all of your HR systems, so you can update, automate, and report on everything in a single unified platform.</p>
+            <p>EmpConcor connects all of your HR systems, so you can update, automate, and report on everything in a single unified platform.</p>
             <p>Learn More</p>
             <div className="hr-card-container">
                 <h1>HR Cloud</h1>
@@ -332,12 +284,12 @@ class Recruiting extends Component{
                     ))}
                 </ul>
             </div>
-            <img src="https://beedatatech.com/ripplingpics/shot2.png" alt="shot2" />
+            <img src="https://beedatatech.com/EmpConcorpics/shot2.png" alt="shot2" />
             
             <div className="hr-bottom-card-container">
                 <img className="hr-bottom-icon" src="https://www.freeiconspng.com/uploads/letter-e-icon-png-22.png" alt="icon" />
-                <h1 className="hr-bottom-heading">Rippling Unity</h1>
-                <p className="hr-bottom-descreption">Built On the first unified workforse platform rippling has every add you need to Effrotlessly
+                <h1 className="hr-bottom-heading">EmpConcor Unity</h1>
+                <p className="hr-bottom-descreption">Built On the first unified workforse platform EmpConcor has every add you need to Effrotlessly
                     globel workforse from HR to IT.
                 </p>
             </div>

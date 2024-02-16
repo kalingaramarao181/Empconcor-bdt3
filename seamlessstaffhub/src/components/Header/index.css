@@ -43,12 +43,12 @@
 }
 
 .nav-item{
-    margin: 20px;
+    margin-right: 15px;
 }
 .nav-button{
     background-color: transparent;
     color: white;
-    font-size: 20px;
+    font-size: 18px;
     border: none;
     border-radius: 30px;
     padding: 10px;
@@ -235,11 +235,18 @@
     background-color: transparent;
 }
 
+.hrcloud-d-name-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
 .hrcloud-d-item-container{
     display: flex;
     flex-direction: row;
-    justify-content: center;
-    align-items: center;
+    justify-content: flex-start;
+    align-items: flex-start;
     width: 300px;
     border: 1px solid #d8d4d9;
     border-radius: 5px;
@@ -257,6 +264,10 @@
     border-radius: 10px;
     text-align: left;
     
+}
+
+.hrc-d-item-link{
+    text-decoration: none;
 }
 
 

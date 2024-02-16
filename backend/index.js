@@ -53,24 +53,6 @@ app.post('/hrlogin', (req, res) => {
     })
 })
 
-//POST CANDIT REGESTER
-app.post('/user', (req, res) => {
-    const sql = "INSERT INTO user (`name`, `email`, `password`, `phone`, `country`, `compeny`) VALUES (?)";
-    const values = [
-        req.body.name,
-        req.body.email,
-        req.body.password,
-        req.body.phoneNo,
-        req.body.country,
-        req.body.compeny,
-    ]
-    db.query(sql, [values], (err, data) => {
-        if(err) return  res.json("Error")
-        return res.json(data)
-    })
-})
-
-
 
 //POST HR REGESTER API
 app.post('/hrdetails', (req, res) => {
@@ -89,27 +71,55 @@ app.post('/hrdetails', (req, res) => {
 })
 
 
-//POST USER TO INTERVIEW API
-app.post('/interviewdata', (req, res) => {
-    const sql = "INSERT INTO interviewdata (`accesscode`, `name`, `email`, `password`, `phone`, `country`, `company`) VALUES (?)";
-    const values = [
-        req.body.accesscode,
-        req.body.name,
-        req.body.email,
-        req.body.password,
-        req.body.phone,
-        req.body.country,
-        req.body.compeny,
-    ]
+//POST CANDIT REGESTER
+app.post('/user', (req, res) => {
+    const {name, position, experience, location, salary, email, phoneNo, about, address} = req.body
+    const sql = "INSERT INTO user (`name`, `position`, `experience`, `location`, `salary`, `email`, `phoneno`, `about`, `address`) VALUES (?)";
+    const values = [name, position, experience, location, salary, email, phoneNo, about, address]
     db.query(sql, [values], (err, data) => {
-        if(err) return  res.json(err)
+        if(err) return  res.json("Error")
         return res.json(data)
-        console.log(data)
     })
 })
 
 
-//DELETE USER API
+
+//POST USER TO INTERVIEW API
+app.post('/interviewdata', (req, res) => {
+    const {accesscode, name, position, experience, location, salary, email, phoneNo, about, address} = req.body
+    const sql = "INSERT INTO interviewdata (`accesscode`, `name`, `position`, `experience`, `location`, `salary`, `email`, `phoneno`, `about`, `address`) VALUES (?)";
+    const values = [accesscode, name, position, experience, location, salary, email, phoneNo, about, address]
+    db.query(sql, [values], (err, data) => {
+        if(err) return  res.json("Error")
+        return res.json(data)
+    })
+})
+
+//POST USER TO OFFERACPDATA
+app.post('/offeracpdata', (req, res) => {
+    const {accesscode, name, position, experience, location, salary, email, phoneNo, about, address} = req.body
+    const sql = "INSERT INTO offerdata (`accesscode`, `name`, `position`, `experience`, `location`, `salary`, `email`, `phoneno`, `about`, `address`) VALUES (?)";
+    const values = [accesscode, name, position, experience, location, salary, email, phoneNo, about, address]
+    db.query(sql, [values], (err, data) => {
+        if(err) return  res.json("Error")
+        return res.json(data)
+    })
+})
+
+
+//POST USER TO ONBOARDING
+app.post('/onboarding', (req, res) => {
+    const {accesscode, name, position, experience, location, salary, email, phoneNo, about, address} = req.body
+    const sql = "INSERT INTO onboardingdata (`accesscode`, `name`, `position`, `experience`, `location`, `salary`, `email`, `phoneno`, `about`, `address`) VALUES (?)";
+    const values = [accesscode, name, position, experience, location, salary, email, phoneNo, about, address]
+    db.query(sql, [values], (err, data) => {
+        if(err) return  res.json("Error")
+        return res.json(data)
+    })
+})
+
+
+//DELETE USER FROM APPLICATION
 app.delete("/user/:id", (req, res) => {
     const sql = "DELETE FROM user WHERE id =  ?"
     const id = req.params.id
@@ -119,7 +129,7 @@ app.delete("/user/:id", (req, res) => {
     })
 })
 
-//DELETE USER API
+//DELETE USER FROM INTERVIEW
 app.delete("/interviewdata/:id", (req, res) => {
     const sql = "DELETE FROM interviewdata WHERE id =  ?"
     const id = req.params.id
@@ -129,6 +139,26 @@ app.delete("/interviewdata/:id", (req, res) => {
     })
 })
 
+
+//DELETE USER FROM OFFER DATA
+app.delete("/offerdata/:id", (req, res) => {
+    const sql = "DELETE FROM offerdata WHERE id =  ?"
+    const id = req.params.id
+    db.query(sql, [id], (err, data) => {
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
+
+//DELETE USER FROM ONBOARDING
+app.delete("/onboarding/:id", (req, res) => {
+    const sql = "DELETE FROM onboardingdata WHERE id =  ?"
+    const id = req.params.id
+    db.query(sql, [id], (err, data) => {
+        if(err) return res.json(err)
+        return res.json(data)
+    })
+})
 
 
 //GET USER API
@@ -162,9 +192,29 @@ app.get("/interviewdata", (req, res) => {
     }) 
 })
 
+//GET OFFER DATA
+app.get("/offeracpdata", (req, res) => {
+    console.log(req.body)
+    const sql = `SELECT * FROM offerdata`
+    db.query(sql, (err, data) => {
+        if (err) return res.json(err)
+        return res.json(data)
+    }) 
+})
 
 
+//GET ONBOARDING DATA
+app.get("/onboarding", (req, res) => {
+    console.log(req.body)
+    const sql = `SELECT * FROM onboardingdata`
+    db.query(sql, (err, data) => {
+        if (err) return res.json(err)
+        return res.json(data)
+    }) 
+})
 
+
+//DUMMY DATA
 app.post('/send-email', (req, res) => {
     const { to, subject, body } = req.body;
   
@@ -190,7 +240,7 @@ app.post('/send-email', (req, res) => {
       }
       res.status(200).send('Email sent: ' + info.response);
     });
-  });
+});
 
 
 

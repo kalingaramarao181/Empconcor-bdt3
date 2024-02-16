@@ -24,6 +24,7 @@ import { MdAccountTree } from "react-icons/md";
 import { FaUserSecret } from "react-icons/fa6";
 import { BsHeartPulseFill } from "react-icons/bs";
 import { LiaKhandaSolid } from "react-icons/lia";
+import { CgDollar } from "react-icons/cg";
 
 //IT CLOUD INFORMATION
 import { AiTwotoneAppstore } from "react-icons/ai";
@@ -106,7 +107,7 @@ class Header extends Component{
                 </div>
                 <div className="hrcloud-d-card-container">
                     <div className="hrcloud-d-item-container">
-                        <FaRupeeSign className="hrcloud-d-item-icon"/>
+                        <CgDollar className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">Us Payroll</h1>
                             <p className="hrcloud-d-name-desc">Run payroll in minutes</p>
@@ -120,7 +121,7 @@ class Header extends Component{
                             <p className="hrcloud-d-name-desc">Pay Your entire workforce</p>
                         </div> 
                     </div>
-                    <Link to="./Recruiting" >
+                    <Link className="hrc-d-item-link" to="./Recruiting" >
                     <div className="hrcloud-d-item-container">
                         <FaSearchengin className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">

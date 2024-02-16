@@ -3,16 +3,24 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {Link} from "react-router-dom"
 import Cookies from "js-cookie";
+import { RiDeleteBin5Line } from "react-icons/ri";
 
 const Admin = () => {
   let displayData = []
   const [btnStatus, setBtnStatus] = useState(0)
   const [userData, setAdminData] = useState([]);
+  const [intData, setIntData] = useState([]);
   const [intDataDB, setIntDataDB] = useState([]);
-  const [intData, setIntData] = useState([])
   const [offData, setOffData] = useState([])
+  const [offDataDB, setOffDataDB] = useState([]);
+  const [onboardingData, setOnboardingData] = useState([])
+  const [onboardingDataDB, setOnboardingDataDB] = useState([])
   const [offAcpData, setOffAcpData] = useState([])
   const [hrData, setHRData] = useState([]);
+  const [checkboxStatus, setCheckboxStatus] = useState({isChecked:false, userId:""})
+  const [intCheckboxStatus, setIntCheckboxStatus] = useState({isChecked:false, userId:""})
+  const [offCheckboxStatus, setOffCheckboxStatus] = useState({isChecked:false, userId:""})
+  const [onbCheckboxStatus, setONBCheckboxStatus] = useState({isChecked:false, userId:""})
   const [dataView, setDataView] = useState("APPLICATIONS")
   const token = Cookies.get("jwt_token");
 
@@ -21,7 +29,7 @@ const Admin = () => {
     axios.get('http://localhost:5000/user')
       .then(res => setAdminData(res.data))
       .catch(err => {
-        console.error(err);
+        alert(err);
       });
   }, []);
 
@@ -30,7 +38,7 @@ const Admin = () => {
     axios.get('http://localhost:5000/hrdetails')
       .then(res => setHRData(res.data))
       .catch(err => {
-        console.error(err);
+        alert(err);
       });
   }, []);
 
@@ -43,7 +51,23 @@ const Admin = () => {
           if (dbData.accesscode === token){
             conData.push(dbData)
             setIntData(conData)
-            console.log(intData)
+          }
+        }
+      })
+      .catch(err => {
+        alert(err);
+      });
+  }, []);
+
+  //GET ACCEPTED DATA
+  useEffect(() => {
+    axios.get('http://localhost:5000/offeracpdata')
+      .then(res =>{
+        let conData = []
+        for (let dbData of res.data){
+          if (dbData.accesscode === token){
+            conData.push(dbData)
+            setOffData(conData)
           }
         }
       })
@@ -51,27 +75,71 @@ const Admin = () => {
         console.error(err);
       });
   }, []);
+
+
+//GET ONBOARDING DATA
+useEffect(() => {
+  axios.get('http://localhost:5000/onboarding')
+    .then(res =>{
+      let conData = []
+      for (let dbData of res.data){
+        if (dbData.accesscode === token){
+          conData.push(dbData)
+          setOnboardingData(conData)
+        }
+      }
+    })
+    .catch(err => {
+      alert(err);
+    });
+}, []);
+
  
-  //CLICK TO DELETE USER FROM DATABASE
+  //DELETE USER FROM DATABASE
   const onClickDelete = async (id) => {
     try{
       await axios.delete("http://localhost:5000/user/"+id)
       window.location.reload()
     }catch(err){
-      console.log(err)
+      alert(err)
     }
   }
 
+  //DELETE INTERVIEW USER FROM DATABASE
   const onClickIntDelete = async (id) => {
     try{
       await axios.delete("http://localhost:5000/interviewdata/"+id)
       window.location.reload()
     }catch(err){
-      console.log(err)
+      alert(err)
     }
   }
 
 
+  
+  //DELETE INTERVIEW USER FROM DATABASE
+  const onClickOffDelete = async (id) => {
+    try{
+      await axios.delete("http://localhost:5000/offerdata/"+id)
+      window.location.reload()
+    }catch(err){
+      alert(err)
+    }
+  }
+  
+
+  //DELETE ONBOARDING USER FROM DATABASE
+  const onClickOnboardingDelete = async (id) => {
+    try{
+      await axios.delete("http://localhost:5000/onboarding/"+id)
+      window.location.reload()
+    }catch(err){
+      alert(err)
+    }
+  }
+
+
+  //SELECT APPLICATION USER DATA
   const onClickAddToInterview = (id) => {
     for (let eachItem of userData){
       if (eachItem.id === id){
@@ -81,44 +149,178 @@ const Admin = () => {
     }
   }
 
+  //SELECT INTERVIEW USER DATA
+  const onClickAddToAccept = (id) => {
+    for (let eachItem of intData){
+      if (eachItem.id === id){
+        setOffDataDB(eachItem)
+        setBtnStatus(eachItem.id)
+      }
+    }
+  }
+
+  //SELECT OFFER ACCEPT USER DATA
+  const onClickAddToOnboarding = (id) => {
+    for (let eachItem of offData){
+      if (eachItem.id === id){
+        setOnboardingDataDB(eachItem)
+        setBtnStatus(eachItem.id)
+      }
+    }
+  }
+
+  
+
+  //ADD APPLICATION USER TO INTERVIEW DATABASE
   const onClickAddToInterviewSub = (id) => {
+    if (checkboxStatus.isChecked){
     const accesscode = token
-    const {name, email, password, phone, compeny, country} = intDataDB
-    console.log(name, email, password, phone, compeny, country, accesscode)
-    axios.post("http://localhost:5000/interviewdata" , {name, email, password, phone, country, compeny, accesscode})
+    const {name, position, experience, location, salary, email, phoneNo, about, address} = intDataDB
+    axios.post("http://localhost:5000/interviewdata" , {accesscode, name, position, experience, location, salary, email, phoneNo, about, address})
     .then(res => {
       alert("Successfully Added")
       window.location.reload()
     })
     .catch(err => alert(err))
+  }else{
+    alert("Please Select Data")
   }
-  
+  }
+
+  //ADD INTERVIEW USED DATA TO OFFER_ACCEPT DATABASE
+  const onClickAddToAcceptSub = async (id) => {
+    if (intCheckboxStatus.isChecked){
+      const accesscode = token
+    const {name, position, experience, location, salary, email, phoneNo, about, address} = offDataDB
+    await axios.post("http://localhost:5000/offeracpdata" , {accesscode, name, position, experience, location, salary, email, phoneNo, about, address})
+    .then(res => {
+      alert("Successfully Added")
+      window.location.reload()
+    })
+    .catch(err => alert(err))
+
+    await axios.delete("http://localhost:5000/interviewdata/"+id)
+  }else{
+      alert("Please Select Data")
+    }
+  }
 
 
 
+  //ADD OFFER_ACCEPT USER DATA TO ONBOARDING DATABASE
+  const onClickAddToOnboardingSub = async (id) => {
+    if (offCheckboxStatus.isChecked){
+      const accesscode = token
+    const { name, position, experience, location, salary, email, phoneNo, about, address} = onboardingDataDB
+    await axios.post("http://localhost:5000/onboarding" , {accesscode, name, position, experience, location, salary, email, phoneNo, about, address})
+    .then(res => {
+      alert("Successfully Added")
+      window.location.reload()
+    })
+    .catch(err => alert(err))
 
-  
+    await axios.delete("http://localhost:5000/offerdata/"+id)
+  }else{
+      alert("Please Select Data")
+    }
+  }
 
+  //ADMIN DATA VIEW ITRATION
   let LoginHRIcon = null
   let LoginHRName = null
-
   for (let data of hrData){
     if (data.email === token){
       LoginHRIcon = data.name[0]
       LoginHRName = data.name
     }
   }
-  console.log(LoginHRIcon, LoginHRName)
 
-   if (dataView === "APPLICATIONS"){
-      displayData = userData
+
+
+  //DISPLAY USER DATA FROM DATABASE
+  const displayUserData = () => {
+    if (dataView === "APPLICATIONS"){
+      return (
+        <>
+        {userData.map(user => (
+              <tr className="table">
+                <td><button type="button" className="edit-button-check" onClick={e => onClickAddToInterview(user.id)}><input onChange={e => setCheckboxStatus({isChecked:e.target.checked,userId:user.id})} className="checkbox-ele" type="checkbox"/></button></td>
+                <td className="db-item-name">{user.name}</td>
+                <td className="db-item-name">{user.position}</td>
+                <td className="db-item-name">{user.experience}</td>
+                <td className="db-item-name">{user.location}</td>
+                <td className="db-item-name">{user.salary}</td>
+                <td className="db-item-name">{user.email}</td>
+                <td className="db-item-name">{user.phoneno}</td>
+                <td className="db-item-name">{user.address}</td>
+                <td><button type="button" className={checkboxStatus.isChecked && checkboxStatus.userId === user.id ? `edit-button` : `edit-button-stop`} onClick={e => onClickAddToInterviewSub(user.id)}>Submit</button></td>
+                <td><button type="button" className="delete-button" onClick={e => onClickDelete(user.id)}><RiDeleteBin5Line /></button></td>
+              </tr>
+            ))}
+        </>
+      )
    }else if (dataView === "INTERVIEW"){
-    displayData = intData
+    return (
+      <>
+      {intData.map(user => (
+            <tr className="table">
+              <td><button type="button" className="edit-button-check" onClick={e => onClickAddToAccept(user.id)}><input onChange={e => setIntCheckboxStatus({isChecked:e.target.checked,userId:user.id})} className="checkbox-ele" type="checkbox"/></button></td>
+              <td className="db-item-name">{user.name}</td>
+              <td className="db-item-name">{user.position}</td>
+              <td className="db-item-name">{user.experience}</td>
+              <td className="db-item-name">{user.location}</td>
+              <td className="db-item-name">{user.salary}</td>
+              <td className="db-item-name">{user.email}</td>
+              <td className="db-item-name">{user.phoneno}</td>
+              <td className="db-item-name">{user.address}</td>
+              <td><button type="button" className={intCheckboxStatus.isChecked && intCheckboxStatus.userId === user.id ? `edit-button` : `edit-button-stop`} onClick={e => onClickAddToAcceptSub(user.id)}>Submit</button></td>
+              <td><button type="button" className="delete-button" onClick={e => onClickIntDelete(user.id)}><RiDeleteBin5Line /></button></td>
+            </tr>
+          ))}
+      </>
+    )
    }else if (dataView === "OFFER"){
-    displayData = offData
-   }else{
-    displayData = offAcpData
+    return (
+      <>
+      {offData.map(user => (
+            <tr className="table">
+              <td><button type="button" className="edit-button-check" onClick={e => onClickAddToOnboarding(user.id)}><input onChange={e => setOffCheckboxStatus({isChecked:e.target.checked,userId:user.id})} className="checkbox-ele" type="checkbox"/></button></td>
+              <td className="db-item-name">{user.name}</td>
+              <td className="db-item-name">{user.position}</td>
+              <td className="db-item-name">{user.experience}</td>
+              <td className="db-item-name">{user.location}</td>
+              <td className="db-item-name">{user.salary}</td>
+              <td className="db-item-name">{user.email}</td>
+              <td className="db-item-name">{user.phoneno}</td>
+              <td className="db-item-name">{user.address}</td>
+              <td><button type="button" className={offCheckboxStatus.isChecked && offCheckboxStatus.userId === user.id ? `edit-button` : `edit-button-stop`} onClick={e => onClickAddToOnboardingSub(user.id)}>Submit</button></td>
+              <td><button type="button" className="delete-button" onClick={e => onClickOffDelete(user.id)}><RiDeleteBin5Line /></button></td>
+            </tr>
+          ))}
+      </>
+    )
+   }else if (dataView === "ONBOARDING"){
+    return (
+      <>
+      {onboardingData.map(user => (
+            <tr className="table">
+              <td><button type="button" className="edit-button-check" onClick={e => onClickAddToOnboarding(user.id)}><input onChange={e => setIntCheckboxStatus({isChecked:e.target.checked,userId:user.id})} className="checkbox-ele" type="checkbox"/></button></td>
+              <td className="db-item-name">{user.name}</td>
+              <td className="db-item-name">{user.position}</td>
+              <td className="db-item-name">{user.experience}</td>
+              <td className="db-item-name">{user.location}</td>
+              <td className="db-item-name">{user.salary}</td>
+              <td className="db-item-name">{user.email}</td>
+              <td className="db-item-name">{user.phoneno}</td>
+              <td className="db-item-name">{user.address}</td>
+              <td><button type="button" className="delete-button" onClick={e => onClickOnboardingDelete(user.id)}><RiDeleteBin5Line /></button></td>
+            </tr>
+          ))}
+      </>
+    )
    }
+
+  }
 
 
 
@@ -142,32 +344,28 @@ const Admin = () => {
             </Link>
             </div>
         </div>
-          <h1>User Data</h1>
-          <div className="data-total-view-container">
-          <div className="data-view-container">
+        <div className="data-view-container">
             <button onClick={() => setDataView("APPLICATIONS")} className="data-view-btn" type="button">Applications<span className="data-count">{userData.length}</span></button>
             <button onClick={() => setDataView("INTERVIEW")} className="data-view-btn" type="button">Interview<span className="data-count">{intData.length}</span></button>
             <button onClick={() => setDataView("OFFER")} className="data-view-btn" type="button">Offer<span className="data-count">{offData.length}</span></button>
-            <button onClick={() => setDataView("ACCEPTED")} className="data-view-btn" type="button">Offer Accepted<span className="data-count">{offAcpData.length}</span></button>
+            <button onClick={() => setDataView("ONBOARDING")} className="data-view-btn" type="button">On Boarding<span className="data-count">{onboardingData.length}</span></button>
           </div>
-          <div className="db-item-container">
-            {displayData.map(user => (
-              <div className='admin-data' key={user.id}>
-                <p className="db-item-name">Name: {user.name}</p><hr/>
-                <p className="db-item-name">Email: {user.email}</p><hr/>
-                <p className="db-item-name">Compeny Name: {user.compeny}</p><hr/>
-                <p className="db-item-name">Country Name: {user.country}</p><hr/>
-              <div>
-                  {displayData !== "INTERVIEW" ? btnStatus === user.id ? <button type="button" className="edit-button" onClick={e => onClickAddToInterviewSub(user.id)}>Submit</button> : 
-                                            <button type="button" className="edit-button" onClick={e => onClickAddToInterview(user.id)}>Select</button>: null}
-                  {displayData === "INTERVIEW" ? <button type="button" className="delete-button" onClick={e => onClickDelete(user.id)}>Remove</button> : 
-                                                <button type="button" className="delete-button" onClick={e => onClickIntDelete(user.id)}>Remove</button>}
-                </div>
-              </div>
-              
-            ))}
-          </div>
-          </div>
+          
+          <h1>{dataView}:</h1>
+          <table className='admin-data'>
+            <tr className="table">
+                <th>Check</th>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Experience</th>
+                <th>Location</th>
+                <th>Salary</th>
+                <th>Email</th>
+                <th>Mobile</th>
+                <th>Address</th>
+              </tr>
+            {displayUserData()}
+             </table>
         </>
       )}
     </div>)

@@ -14,6 +14,7 @@ import HrLogin from './components/HrLogin';
 import SendMail from './components/SendMail';
 
 import { BrowserRouter, Route, Switch } from "react-router-dom"
+import LoginView from './components/LoginView';
 
 
 const  App = () => {
