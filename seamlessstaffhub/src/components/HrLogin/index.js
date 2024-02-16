@@ -17,7 +17,7 @@ class HrLogin extends Component {
         axios.post("http://localhost:5000/hrlogin", {email, password})
         .then(res => {
             if (res.data){
-                history.replace("/hrr")
+                history.replace("/admin")
                 Cookies.set("jwt_token", `${email}`, { expires: 30 });
             }else{
                 alert("Please provide valid details")

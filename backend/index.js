@@ -87,6 +87,7 @@ app.post('/user', (req, res) => {
 //POST USER TO INTERVIEW API
 app.post('/interviewdata', (req, res) => {
     const {accesscode, name, position, experience, location, salary, email, phoneNo, about, address} = req.body
+    console.log(phoneNo)
     const sql = "INSERT INTO interviewdata (`accesscode`, `name`, `position`, `experience`, `location`, `salary`, `email`, `phoneno`, `about`, `address`) VALUES (?)";
     const values = [accesscode, name, position, experience, location, salary, email, phoneNo, about, address]
     db.query(sql, [values], (err, data) => {

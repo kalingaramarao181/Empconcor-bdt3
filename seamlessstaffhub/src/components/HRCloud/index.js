@@ -1,6 +1,6 @@
 import { Component } from "react";
 import "./index.css";
-import RegesterFarm from "../RegesterFarm"
+import RegesterFarm from "../RegesterFarm";
 
 const ratingList = [
     {

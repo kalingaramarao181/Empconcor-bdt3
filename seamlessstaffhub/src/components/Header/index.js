@@ -388,12 +388,14 @@ class Header extends Component{
         this.setState({loginButtonStatus: true})
         Cookies.remove("jwt_token")
         history.replace("/")
+        this.setState({producstStatus:false})
     }
 
     onClickLogin = () => {
         const {history} = this.props
         this.setState({loginButtonStatus: false})
         history.replace("/login")
+        this.setState({producstStatus:false})
     }
 
     
@@ -404,6 +406,11 @@ class Header extends Component{
     logoutStatus = () => {
         return <button className="login-button" type="button" onClick={this.onClickLogin}>Login</button>
     }
+
+    onClickImage = () => {
+        this.setState({producstStatus:false})
+    }
+
 
 
     render(){
@@ -418,10 +425,10 @@ class Header extends Component{
 
 
     return(
-        <nav className="nav-main-container">
+        <nav onClick={this.onClickNav} className="nav-main-container">
             <div className="nav-container">
                 <Link to="/">
-                    <img className="nav-image" src="img\applogo.png" alt="head"/>
+                    <img onClick={this.onClickImage} className="nav-image" src="img\applogo.png" alt="head"/>
                 </Link>
                 <ul className="nav-items">
                     <li className="nav-item">

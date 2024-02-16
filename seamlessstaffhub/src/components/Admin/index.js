@@ -176,6 +176,7 @@ useEffect(() => {
     if (checkboxStatus.isChecked){
     const accesscode = token
     const {name, position, experience, location, salary, email, phoneNo, about, address} = intDataDB
+    console.log(phoneNo)
     axios.post("http://localhost:5000/interviewdata" , {accesscode, name, position, experience, location, salary, email, phoneNo, about, address})
     .then(res => {
       alert("Successfully Added")
