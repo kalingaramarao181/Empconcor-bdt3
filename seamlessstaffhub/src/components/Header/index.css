@@ -92,6 +92,7 @@
     flex-direction: row;
     justify-content: flex-start;
     align-items: flex-start;
+    transform: translateY(-50%);
   }
   .products-list{
     display: flex;

@@ -3,9 +3,11 @@
     background-size: cover;
     height: 80vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     margin: 15px;
+    padding: 40px;
   }
   .ssh-card-container {
     display: flex;
@@ -40,6 +42,7 @@
     border: none;
     color: #fff;
     margin-top: 10px;
+    width: 150px;
   }
   .label {
     color: #fff;
@@ -87,4 +90,13 @@
   .err-msg{
     font-size: 18px;
     color: red;
+  }
+
+  .login-selection{
+    align-self: flex-end;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 6px;
   }

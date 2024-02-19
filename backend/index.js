@@ -38,8 +38,26 @@ app.post('/login', (req, res) => {
 
 //HR LOGIN API
 app.post('/hrlogin', (req, res) => {
-    const {email, password} =  req.body
-    const sql = `SELECT * FROM hrdetails WHERE email = '${email}'`;
+    const {username, password} =  req.body
+    const sql = `SELECT * FROM hrdetails WHERE email = '${username}'`;
+    db.query(sql, (err, data) => {
+        if(data.length === 0){
+            res.json(false)
+        }else{
+            if (data[0].password === password){
+                res.json(true)
+            }else{
+                res.json(false)
+            }
+        }
+    })
+})
+
+
+//EMPLOYE LOGIN API
+app.post('/employelogin', (req, res) => {
+    const {username, password} =  req.body
+    const sql = `SELECT * FROM employe WHERE email = '${username}'`;
     db.query(sql, (err, data) => {
         if(data.length === 0){
             res.json(false)
@@ -56,18 +74,27 @@ app.post('/hrlogin', (req, res) => {
 
 //POST HR REGESTER API
 app.post('/hrdetails', (req, res) => {
-    const sql = "INSERT INTO hrdetails (`name`, `email`, `password`, `phone`, `compeny`) VALUES (?)";
-    const values = [
-        req.body.name,
-        req.body.email,
-        req.body.password,
-        req.body.phoneNo,
-        req.body.compeny,
-    ]
-    db.query(sql, [values], (err, data) => {
-        if(err) return  res.json("Error")
-        return res.json(data)
+    const dbSql = `SELECT * FROM hrdetails WHERE email = '${req.body.email}'`
+    db.query(dbSql, (err, data) => {
+        console.log(data)
+        if (data.length === 0){
+            const sql = "INSERT INTO hrdetails (`name`, `email`, `password`, `phone`, `compeny`) VALUES (?)";
+            const values = [
+                req.body.name,
+                req.body.email,
+                req.body.password,
+                req.body.phoneNo,
+                req.body.compeny,
+            ]
+            db.query(sql, [values], (err, data) => {
+                if(err) return  res.json("Error")
+                return res.json("HR Added Successfully")
+            })
+        }else{
+            res.json("HR Alredy Exists")
+        }
     })
+    
 })
 
 
@@ -86,10 +113,10 @@ app.post('/user', (req, res) => {
 
 //POST USER TO INTERVIEW API
 app.post('/interviewdata', (req, res) => {
-    const {accesscode, name, position, experience, location, salary, email, phoneNo, about, address} = req.body
-    console.log(phoneNo)
+    const {accesscode, name, position, experience, location, salary, email, phoneno, about, address} = req.body
+    console.log(phoneno)
     const sql = "INSERT INTO interviewdata (`accesscode`, `name`, `position`, `experience`, `location`, `salary`, `email`, `phoneno`, `about`, `address`) VALUES (?)";
-    const values = [accesscode, name, position, experience, location, salary, email, phoneNo, about, address]
+    const values = [accesscode, name, position, experience, location, salary, email, phoneno, about, address]
     db.query(sql, [values], (err, data) => {
         if(err) return  res.json("Error")
         return res.json(data)
@@ -98,9 +125,9 @@ app.post('/interviewdata', (req, res) => {
 
 //POST USER TO OFFERACPDATA
 app.post('/offeracpdata', (req, res) => {
-    const {accesscode, name, position, experience, location, salary, email, phoneNo, about, address} = req.body
+    const {accesscode, name, position, experience, location, salary, email, phoneno, about, address} = req.body
     const sql = "INSERT INTO offerdata (`accesscode`, `name`, `position`, `experience`, `location`, `salary`, `email`, `phoneno`, `about`, `address`) VALUES (?)";
-    const values = [accesscode, name, position, experience, location, salary, email, phoneNo, about, address]
+    const values = [accesscode, name, position, experience, location, salary, email, phoneno, about, address]
     db.query(sql, [values], (err, data) => {
         if(err) return  res.json("Error")
         return res.json(data)
@@ -110,15 +137,26 @@ app.post('/offeracpdata', (req, res) => {
 
 //POST USER TO ONBOARDING
 app.post('/onboarding', (req, res) => {
-    const {accesscode, name, position, experience, location, salary, email, phoneNo, about, address} = req.body
+    const {accesscode, name, position, experience, location, salary, email, phoneno, about, address} = req.body
     const sql = "INSERT INTO onboardingdata (`accesscode`, `name`, `position`, `experience`, `location`, `salary`, `email`, `phoneno`, `about`, `address`) VALUES (?)";
-    const values = [accesscode, name, position, experience, location, salary, email, phoneNo, about, address]
+    const values = [accesscode, name, position, experience, location, salary, email, phoneno, about, address]
     db.query(sql, [values], (err, data) => {
         if(err) return  res.json("Error")
         return res.json(data)
     })
 })
 
+
+//POST USER TO EMPLOYE
+app.post('/employedata', (req, res) => {
+    const {accesscode, name, position, experience, location, salary, email, phoneno, about, address, password, role} = req.body
+    const sql = "INSERT INTO employe (`accesscode`, `name`, `position`, `experience`, `location`, `salary`, `email`, `phoneno`, `about`, `address`, `password`, `role`) VALUES (?)";
+    const values = [accesscode, name, position, experience, location, salary, email, phoneno, about, address, password, role]
+    db.query(sql, [values], (err, data) => {
+        if(err) return  res.json("Error")
+        return res.json(data)
+    })
+})
 
 //DELETE USER FROM APPLICATION
 app.delete("/user/:id", (req, res) => {
@@ -183,6 +221,17 @@ app.get("/hrdetails", (req, res) => {
     ) 
 })
 
+//GET ADMIN API
+app.get("/admindata", (req, res) => {
+    console.log(req.body)
+    const sql = `SELECT * FROM admin`
+    db.query(sql, (err, data) => {
+        if (err) return res.json(err)
+        return res.json(data)
+    }
+    ) 
+})
+
 //GET INTERVIEW DATA
 app.get("/interviewdata", (req, res) => {
     console.log(req.body)
@@ -208,6 +257,16 @@ app.get("/offeracpdata", (req, res) => {
 app.get("/onboarding", (req, res) => {
     console.log(req.body)
     const sql = `SELECT * FROM onboardingdata`
+    db.query(sql, (err, data) => {
+        if (err) return res.json(err)
+        return res.json(data)
+    }) 
+})
+
+
+//GET EMPLOYE DATA
+app.get("/employedata", (req, res) => {
+    const sql = `SELECT * FROM employe`
     db.query(sql, (err, data) => {
         if (err) return res.json(err)
         return res.json(data)

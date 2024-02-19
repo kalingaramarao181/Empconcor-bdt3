@@ -15,6 +15,7 @@ import SendMail from './components/SendMail';
 
 import { BrowserRouter, Route, Switch } from "react-router-dom"
 import LoginView from './components/LoginView';
+import EmployeDashBoard from './components/EmployeDashBoard';
 
 
 const  App = () => {
@@ -34,6 +35,7 @@ const  App = () => {
           <ProtectedRoute path="/hrr" exact component={HRRegister} />
           <Route path="/hrlogin" exact component={HrLogin} />
           <Route path="/send-mail" exact component={SendMail} />
+          <ProtectedRoute path="/employedb" exact component={EmployeDashBoard} />
         </Switch>
     </BrowserRouter>
     )

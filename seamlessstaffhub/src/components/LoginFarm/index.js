@@ -10,26 +10,57 @@ class LoginFarm extends Component{
         password: '',
         showSubmitError: false,
         errorMsg: '',
+        loginStatus: "",
       }
 
       onSubmitForm =async event => {
         const {history} = this.props
         event.preventDefault()
-        const {username, password} = this.state
-        axios.post("http://localhost:5000/login", {username, password})
-        .then(res => {
+        const {username, password, loginStatus} = this.state
+        if (loginStatus === "ADMIN"){
+          axios.post("http://localhost:5000/login", {username, password})
+          .then(res => {
           if (res.data){
             history.replace("/hrr")
             Cookies.set("jwt_token", `${username}`, { expires: 1 });
+            Cookies.set("login_status", `${loginStatus}`, { expires: 30 })
           }else{
             this.setState({errorMsg: "User Not Found Please Enter valid Credentials"})
             alert("User Not Found Please Enter valid Credentials")
           }
-        }).catch(err => this.setState({errorMsg: err}))
-        this.setState({username: "", password: ""})
+          }).catch(err => this.setState({errorMsg: err}))
+          this.setState({username: "", password: ""})
+        }else if (loginStatus === "HR"){
+          axios.post("http://localhost:5000/hrlogin", {username, password})
+          .then(res => {
+            if (res.data){
+                history.replace("/admin")
+                Cookies.set("jwt_token", `${username}`, { expires: 30 });
+                Cookies.set("login_status", `${loginStatus}`, { expires: 30 })
+            }else{
+                alert("Please provide valid details")
+            }
+            console.log(res)
+            })
+            .catch(err => alert(`${err}`))
+        }else if(loginStatus === "EMPLOYE"){
+          axios.post("http://localhost:5000/employelogin", {username, password})
+          .then(res => {
+            if (res.data){
+                history.replace("/employedb")
+                Cookies.set("jwt_token", `${username}`, { expires: 30 });
+                Cookies.set("login_status", `${loginStatus}`, { expires: 30 })
+            }else{
+                alert("Please provide valid details")
+            }
+            console.log(res)
+            })
+            .catch(err => alert(`${err}`))
+        }
+        
       }
 
-    onEnterUsername = event => {
+      onEnterUsername = event => {
         this.setState({username: event.target.value})
       }
     
@@ -37,9 +68,12 @@ class LoginFarm extends Component{
         this.setState({password: event.target.value})
       }
 
+      onChangeLoginStatus = event => {
+        this.setState({loginStatus: event.target.value})
+      }
+
     renderUsername = () => {
         const {username} = this.state
-    
         return (
           <>
             <label className="label" htmlFor="userName">
@@ -59,7 +93,6 @@ class LoginFarm extends Component{
 
       renderPassword = () => {
         const {password} = this.state
-    
         return (
           <>
             <label className="label" htmlFor="password">
@@ -78,9 +111,14 @@ class LoginFarm extends Component{
       }
 
     render(){
-      const {errorMsg} = this.state
+      const {errorMsg, loginStatus} = this.state
         return(
             <div className="ssh-app-container">
+              <select className="login-selection" onChange={this.onChangeLoginStatus}>
+                <option value="ADMIN">Admin</option>
+                <option value="HR">HR</option>
+                <option value="EMPLOYE">Employe</option>
+              </select>
                 <div className="ssh-card-container">
                 <img
                     src="img\applogo.png"
@@ -91,7 +129,7 @@ class LoginFarm extends Component{
             <div className="input-container">{this.renderUsername()}</div>
             <div className="input-container">{this.renderPassword()}</div>
             <button className="login-button" type="submit">
-              Login
+             {loginStatus} Login
             </button>
           </form>
           <p className="err-msg">{errorMsg}</p>

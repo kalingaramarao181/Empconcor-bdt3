@@ -15,14 +15,17 @@ const Admin = () => {
   const [offDataDB, setOffDataDB] = useState([]);
   const [onboardingData, setOnboardingData] = useState([])
   const [onboardingDataDB, setOnboardingDataDB] = useState([])
+  const [employeDataDB, setEmployeDataDB] = useState([])
   const [offAcpData, setOffAcpData] = useState([])
   const [hrData, setHRData] = useState([]);
   const [checkboxStatus, setCheckboxStatus] = useState({isChecked:false, userId:""})
   const [intCheckboxStatus, setIntCheckboxStatus] = useState({isChecked:false, userId:""})
   const [offCheckboxStatus, setOffCheckboxStatus] = useState({isChecked:false, userId:""})
   const [onbCheckboxStatus, setONBCheckboxStatus] = useState({isChecked:false, userId:""})
+  const [role, setRole] = useState("")
   const [dataView, setDataView] = useState("APPLICATIONS")
   const token = Cookies.get("jwt_token");
+  const loginStatus = Cookies.get("login_status")
 
   //GET USER DATA
   useEffect(() => {
@@ -33,13 +36,21 @@ const Admin = () => {
       });
   }, []);
 
-  //GET HR DETAILS
+  //GET HR & ADMIN DETAILS
   useEffect(() => {
-    axios.get('http://localhost:5000/hrdetails')
+    if (loginStatus === "HR"){
+      axios.get('http://localhost:5000/hrdetails')
       .then(res => setHRData(res.data))
       .catch(err => {
         alert(err);
       });
+    }else if (loginStatus === "ADMIN"){
+      axios.get('http://localhost:5000/admindata')
+      .then(res => setHRData(res.data))
+      .catch(err => {
+        alert(err);
+      });
+    }   
   }, []);
 
   //GET INTERVIEW DATA
@@ -76,7 +87,6 @@ const Admin = () => {
       });
   }, []);
 
-
 //GET ONBOARDING DATA
 useEffect(() => {
   axios.get('http://localhost:5000/onboarding')
@@ -94,7 +104,8 @@ useEffect(() => {
     });
 }, []);
 
- 
+//////////////////////////////////////////////////////////////////////////////////////
+
   //DELETE USER FROM DATABASE
   const onClickDelete = async (id) => {
     try{
@@ -115,9 +126,8 @@ useEffect(() => {
     }
   }
 
-
   
-  //DELETE INTERVIEW USER FROM DATABASE
+  //DELETE OFFER USER FROM DATABASE
   const onClickOffDelete = async (id) => {
     try{
       await axios.delete("http://localhost:5000/offerdata/"+id)
@@ -138,6 +148,7 @@ useEffect(() => {
     }
   }
 
+//////////////////////////////////////////////////////////////////////////////////////
 
   //SELECT APPLICATION USER DATA
   const onClickAddToInterview = (id) => {
@@ -169,15 +180,25 @@ useEffect(() => {
     }
   }
 
-  
+  //SELECT employe USER DATA
+  const onClickAddToEmploye = (id) => {
+    for (let eachItem of onboardingData){
+      if (eachItem.id === id){
+        setEmployeDataDB(eachItem)
+        setBtnStatus(eachItem.id)
+      }
+    }
+  }
 
+//////////////////////////////////////////////////////////////////////////////////////
+  
   //ADD APPLICATION USER TO INTERVIEW DATABASE
   const onClickAddToInterviewSub = (id) => {
     if (checkboxStatus.isChecked){
     const accesscode = token
-    const {name, position, experience, location, salary, email, phoneNo, about, address} = intDataDB
-    console.log(phoneNo)
-    axios.post("http://localhost:5000/interviewdata" , {accesscode, name, position, experience, location, salary, email, phoneNo, about, address})
+    const {name, position, experience, location, salary, email, phoneno, about, address} = intDataDB
+    console.log(phoneno)
+    axios.post("http://localhost:5000/interviewdata" , {accesscode, name, position, experience, location, salary, email, phoneno, about, address})
     .then(res => {
       alert("Successfully Added")
       window.location.reload()
@@ -188,12 +209,12 @@ useEffect(() => {
   }
   }
 
-  //ADD INTERVIEW USED DATA TO OFFER_ACCEPT DATABASE
+  //ADD INTERVIEW USER DATA TO OFFER_ACCEPT DATABASE
   const onClickAddToAcceptSub = async (id) => {
     if (intCheckboxStatus.isChecked){
       const accesscode = token
-    const {name, position, experience, location, salary, email, phoneNo, about, address} = offDataDB
-    await axios.post("http://localhost:5000/offeracpdata" , {accesscode, name, position, experience, location, salary, email, phoneNo, about, address})
+    const {name, position, experience, location, salary, email, phoneno, about, address} = offDataDB
+    await axios.post("http://localhost:5000/offeracpdata" , {accesscode, name, position, experience, location, salary, email, phoneno, about, address})
     .then(res => {
       alert("Successfully Added")
       window.location.reload()
@@ -206,14 +227,12 @@ useEffect(() => {
     }
   }
 
-
-
   //ADD OFFER_ACCEPT USER DATA TO ONBOARDING DATABASE
   const onClickAddToOnboardingSub = async (id) => {
     if (offCheckboxStatus.isChecked){
       const accesscode = token
-    const { name, position, experience, location, salary, email, phoneNo, about, address} = onboardingDataDB
-    await axios.post("http://localhost:5000/onboarding" , {accesscode, name, position, experience, location, salary, email, phoneNo, about, address})
+    const { name, position, experience, location, salary, email, phoneno, about, address} = onboardingDataDB
+    await axios.post("http://localhost:5000/onboarding" , {accesscode, name, position, experience, location, salary, email, phoneno, about, address})
     .then(res => {
       alert("Successfully Added")
       window.location.reload()
@@ -226,9 +245,34 @@ useEffect(() => {
     }
   }
 
+  //ADD ONBOARDING USER DATA TO EMPLOYE DATABASE
+  const onClickAddToEmployeSub = async (id) => {
+    if (onbCheckboxStatus.isChecked){
+      const accesscode = token
+    const {name, position, experience, location, salary, email, phoneno, about, address} = employeDataDB
+    const password = phoneno
+    await axios.post("http://localhost:5000/employedata" , {accesscode, name, position, experience, location, salary, email, phoneno, about, address, password, role})
+    .then(res => {
+      alert("Successfully Added")
+      window.location.reload()
+    })
+    .catch(err => console.log(err))
+
+    await axios.delete("http://localhost:5000/onboarding/"+id)
+  }else{
+      alert("Please Select Data")
+    }
+  }
+
+
+//////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+  
+
   //ADMIN DATA VIEW ITRATION
   let LoginHRIcon = null
   let LoginHRName = null
+  console.log(hrData)
   for (let data of hrData){
     if (data.email === token){
       LoginHRIcon = data.name[0]
@@ -236,7 +280,7 @@ useEffect(() => {
     }
   }
 
-
+//////////////////////////////////////////////////////////////////////////////////////
 
   //DISPLAY USER DATA FROM DATABASE
   const displayUserData = () => {
@@ -305,7 +349,7 @@ useEffect(() => {
       <>
       {onboardingData.map(user => (
             <tr className="table">
-              <td><button type="button" className="edit-button-check" onClick={e => onClickAddToOnboarding(user.id)}><input onChange={e => setIntCheckboxStatus({isChecked:e.target.checked,userId:user.id})} className="checkbox-ele" type="checkbox"/></button></td>
+              <td><button type="button" className="edit-button-check" onClick={e => onClickAddToEmploye(user.id)}><input onChange={e => setONBCheckboxStatus({isChecked:e.target.checked,userId:user.id})} className="checkbox-ele" type="checkbox"/></button></td>
               <td className="db-item-name">{user.name}</td>
               <td className="db-item-name">{user.position}</td>
               <td className="db-item-name">{user.experience}</td>
@@ -314,25 +358,36 @@ useEffect(() => {
               <td className="db-item-name">{user.email}</td>
               <td className="db-item-name">{user.phoneno}</td>
               <td className="db-item-name">{user.address}</td>
+              <td>
+                <select className="selection-input" onChange={e => setRole(e.target.value) }>
+                  <option value="">--Select Role--</option>
+                  <option value="WEB Developer">WEB Developer</option>
+                  <option value="Sales Manger">Sales Manger</option>
+                  <option value="Backend Developer">Backend Developer</option>
+                  <option value="Frontend Developer">Frontend Developer</option>
+                  <option value="Assistent Manger">Assistent Manger</option>
+                </select>
+              </td>
+              <td><button type="button" className={onbCheckboxStatus.isChecked && onbCheckboxStatus.userId === user.id ? `edit-button` : `edit-button-stop`} onClick={e => onClickAddToEmployeSub(user.id)}>Submit</button></td>
               <td><button type="button" className="delete-button" onClick={e => onClickOnboardingDelete(user.id)}><RiDeleteBin5Line /></button></td>
+              <td>{role}</td>
             </tr>
           ))}
       </>
     )
    }
-
   }
 
 
-
+//RENDER PAGE
   return (
     <div className="admindata-container">
       {(
         <>
         <div className="admin-name-button-container">
           <div className="admin-name-container">
-            <p className="admin-profile">{LoginHRIcon}</p>
-            <h1 className="admin-name">{LoginHRName}</h1>
+              <p className="admin-profile">{LoginHRIcon}</p>
+              <h1 className="admin-name">{LoginHRName}</h1>
           </div>
           <div>
           <Link to="/Regester">

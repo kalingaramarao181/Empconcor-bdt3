@@ -181,3 +181,8 @@ th{
     width: 20px;
     font-size: 20px;
 }
+
+.selection-input{
+    padding: 10px;
+    border-radius: 6px;
+}

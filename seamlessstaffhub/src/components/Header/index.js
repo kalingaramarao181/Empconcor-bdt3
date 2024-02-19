@@ -387,6 +387,7 @@ class Header extends Component{
         const {history} = this.props
         this.setState({loginButtonStatus: true})
         Cookies.remove("jwt_token")
+        Cookies.remove("login_status")
         history.replace("/")
         this.setState({producstStatus:false})
     }

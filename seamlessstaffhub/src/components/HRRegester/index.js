@@ -20,7 +20,8 @@ class HRRegister extends Component {
     loginPassword: "",
     errorMsg: "",
     farmStatus: true,
-    errMsg:""
+    errMsg:"",
+    regErr: "",
   }
 
   onChangeLoginEmail = (event) => {
@@ -106,8 +107,7 @@ class HRRegister extends Component {
     if (email !== "" && password !== "" && name!=="" && phoneNo !== ""){
       axios.post("http://localhost:5000/hrdetails" , {name, email, password, phoneNo, compeny})
       .then(res => {
-        console.log(res.data)
-        alert("HR Regestered Successfully")
+        alert(res.data)
       })
       .catch(err => console.log(err))
       this.setState({name: "", email: "", password: "", phoneNo: "", compeny: ""})
@@ -129,6 +129,7 @@ class HRRegister extends Component {
                 <input type="text" className='AD-inputbox' value={compeny} onChange={this.onChangeCompeny} placeholder='Enter Your Company Name'/>
                 <p className="err-msg">{errMsg}</p>
                 <button type="submit" className='AD-button1'>SUBMIT</button>
+                <p className="regester-err-msg"></p>
                 <button type="button" onClick={this.onClickLogin} className='AD-button-sb'>Login</button>
               </form> : <form className='AD-card21' onSubmit={this.submitLoginFarm}> 
                 <h1 className='AD-head1'>HR Login</h1>
