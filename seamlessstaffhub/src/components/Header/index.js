@@ -159,10 +159,12 @@ class Header extends Component{
                 <div className="hrcloud-d-card-container">
                     <div className="hrcloud-d-item-container">
                         <IoMdClock className="hrcloud-d-item-icon"/>
+                        <Link className="hrc-d-item-link" to="./employedb" >
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">Time & Attandance</h1>
                             <p className="hrcloud-d-name-desc">Easyly Track & Aprove Time</p>
-                        </div> 
+                        </div>
+                        </Link>
                     </div>
     
                     <div className="hrcloud-d-item-container">

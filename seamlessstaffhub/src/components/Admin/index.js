@@ -390,7 +390,7 @@ useEffect(() => {
               <h1 className="admin-name">{LoginHRName}</h1>
           </div>
           <div>
-          <Link to="/Regester">
+          <Link to="/empregester">
               <button className="add-admin-button">Add Employee</button>
            </Link><br/>
            <Link to="/hrr">
