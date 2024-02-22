@@ -182,7 +182,6 @@ app.post('/attindance', (req, res) => {
     const dbDate = `${Y}-${M + 1}-${D}`
     const timeOut = ""
     const name = req.body.name
-    console.log(req.body)
     const sql = "INSERT INTO attendance (`employeid`, `name`, `date`, `timein`, `timeout`) VALUES (?)";
     const values = [employeId,name,dbDate, dbtime, timeOut]
     db.query(sql, [values], (err, data) => {
@@ -334,13 +333,33 @@ app.get("/employedata", (req, res) => {
     }) 
 })
 
-//GET ATTENDACE DATA
+//GET ATTENDACE DATA TODAY
 app.get("/empattendancetoday", (req, res) => {
     const date = new Date()
     const today = `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
     const sql = `SELECT * FROM attendance WHERE date = ?`
     const values = [today]
     db.query(sql, [values], (err, data) => {
+        if (err) return res.json(err)
+        return res.json(data)
+    }) 
+})
+
+
+//GET EMPLOYE DETAILS DATA
+app.get("/emp-details/:id", (req, res) => {
+    const sql = `SELECT * FROM attendance WHERE employeid = ?`
+    const values = [req.params.id]
+    db.query(sql, [values], (err, data) => {
+        if (err) return res.json(err)
+        return res.json(data)
+    }) 
+})
+
+//GET ATTENDACE DATA TODAY
+app.get("/empattendanceeveryday", (req, res) => {
+    const sql = `SELECT * FROM attendance`
+    db.query(sql, (err, data) => {
         if (err) return res.json(err)
         return res.json(data)
     }) 

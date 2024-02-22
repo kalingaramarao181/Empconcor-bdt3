@@ -22,6 +22,8 @@
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    margin-top: 20px;
+    margin-top: 30px;
 }
 .Hre-span1{
 margin: 20px;
@@ -37,4 +39,74 @@ margin: 20px;
 }
 .attendance-container{
     padding: 20px;
+}
+
+.table{
+    border-bottom: 1px solid black;
+
+}
+td{
+    padding: 10px;
+}
+th{
+    margin-bottom: 10px;
+    text-align: left;
+    background-color: #D8D7F1;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.checkbox-ele{
+    height: 20px;
+    width: 20px;
+    font-size: 20px;
+}
+
+.selection-input{
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.att-table-container{
+    display: flex;
+    padding: 15px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.emp-list-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.emp-list-item{
+    width: 100px;
+    height: 100px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(9, 141, 141);
+}
+
+.emp-list-name{
+    font-family: "Roboto";
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.emp-list-item-btn{
+    background-color: transparent;
+    border: none;
+}
+.db-item-name1{
+    width: 80px
 }

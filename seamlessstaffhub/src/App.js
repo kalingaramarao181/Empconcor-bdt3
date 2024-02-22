@@ -18,6 +18,7 @@ import LoginView from './components/LoginView';
 import EmployeDashBoard from './components/EmployeDashBoard';
 import EmployeAttendance from './components/EmployeAttendance';
 import EmployeRegister from './components/EmployeRegester';
+import EmployeDetails from './components/EmployeDetails';
 
 
 const  App = () => {
@@ -38,6 +39,7 @@ const  App = () => {
           <Route path="/hrlogin" exact component={HrLogin} />
           <Route path="/send-mail" exact component={SendMail} />
           <Route path="/employedb" exact component={EmployeDashBoard} />
+          <Route path="/emp-details/:id" exact component={EmployeDetails} />
           <ProtectedRoute path="/empregester" exact component={EmployeRegister} />
           <ProtectedRoute path="/empattendance" exact component={EmployeAttendance} />
         </Switch>

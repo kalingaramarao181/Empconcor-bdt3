@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import React from "react";
 import Cookies from "js-cookie";
 import axios from "axios";
+import EmployeAttendance from "../EmployeAttendance";
+import moment from "moment";
 
 const EmployeDashBoard = () => {
     const employe = Cookies.get("jwt_token")
@@ -10,36 +12,9 @@ const EmployeDashBoard = () => {
     const [attendStatus, setAttendStatus] = useState("TIMEIN")
     const [employeId, setEmployeId] = useState("")
     const [empName, setEmpName] = useState("")
-    const [msg, setMsg] = useState("")
-    // const [dbEmploye, setDbEmploye] = useState()
-    const date = new Date()
-    const h = date.getHours()
-    let hoursType = h <= 12 ? "AM" : "PM"
-    let day
-    switch (new Date().getDay()) {
-        case 0:
-          day = "Sunday";
-          break;
-        case 1:
-          day = "Monday";
-          break;
-        case 2:
-           day = "Tuesday";
-          break;
-        case 3:
-          day = "Wednesday";
-          break;
-        case 4:
-          day = "Thursday";
-          break;
-        case 5:
-          day = "Friday";
-          break;
-        case 6:
-          day = "Saturday";
-      }
-    const minutes = date.getMinutes()
-    
+    const [msg, setMsg] = useState()
+    const [date, setDate] = useState('');
+    const [time, setTime] = useState('');
    
     //GET EMPLOYE DATA
     useEffect(() => {
@@ -49,6 +24,15 @@ const EmployeDashBoard = () => {
         alert(err);
       });
     }, []);
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        const momentNow = moment();
+        setDate(momentNow.format('dddd').substring(0, 3).toUpperCase() + ' - ' + momentNow.format('MMMM DD, YYYY'));
+        setTime(momentNow.format('hh:mm:ss A'));
+      }, 100);
+      return () => clearInterval(interval);
+      }, []);
 
     const employeIdList = []
     let name
@@ -80,25 +64,30 @@ const EmployeDashBoard = () => {
             alert("Employe Id Not Matched")
         }
     }
-    
-
-
-    
-    return(
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    const renderSelectedPage = () => {
+      return(
         <div className="att-container">
-            <h2>{`${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}  ${day}`}</h2>
-            <h1>{`${date.getHours() % 12 || 12} : ${minutes} ${hoursType}`}</h1>
-            <form onSubmit={onSubmitTimeFarm}className="att-form">
-                <select className="att-selection" onChange={e => setAttendStatus(e.target.value)}>
-                    <option value="TIMEIN">Timein</option>
-                    <option value="TIMEOUT">Timeout</option>
-                </select>
-                <input className="time-input" onChange={e => setEmployeId(e.target.value)} placeholder="Enter Employe Id"/>
-                <button className="time-submit">Submit</button>
-            </form>
-            <p className="attend-msg">{msg}</p>
+          <h1 className="emp-att-name">Employe Attendance</h1>
+          <div className="emp-att-card">
+            <h2 className="emp-att-date">{date}</h2>
+            <h1 className="emp-att-time">{time}</h1>
+              <form onSubmit={onSubmitTimeFarm}className="att-form">
+                  <select className="att-selection" onChange={e => setAttendStatus(e.target.value)}>
+                      <option className="time-opt" value="TIMEIN">Timein</option>
+                      <option className="time-opt" value="TIMEOUT">Timeout</option>
+                  </select>
+                  <input className="time-input" onChange={e => setEmployeId(e.target.value)} placeholder="Enter Employe Id"/>
+                  <button type="submit" className="time-submit">Submit</button>
+              </form>
+            </div>
+            {msg ? <p className="attend-msg">{msg}</p> : null}
        </div>
-    )
-}
+      )
+    }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  const token =  Cookies.get("jwt_token")
+  return(<>{renderSelectedPage()}</>)
+  }
 
 export default EmployeDashBoard

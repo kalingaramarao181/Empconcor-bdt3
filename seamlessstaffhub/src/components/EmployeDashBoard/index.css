@@ -3,6 +3,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url("https://www.247hrm.com/wp-content/uploads/2016/07/tech-background-image-2.jpg");
+    background-size: cover;
+    height: 90vh;
 }
 .att-form{
     display: flex;
@@ -42,4 +45,38 @@
     border-radius: 10px;
     color: white;
     background-color: #2e5c19;
+}
+
+.emp-att-name{
+    font-family: "Roboto";
+    font-size: 28px;
+    font-weight: 700;
+    color: white;
+}
+
+.emp-att-card{
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.emp-att-date{
+    font-family: "Roboto";
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.emp-att-time{
+    font-family: "Roboto";
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.time-opt{
+    text-align: center;
 }

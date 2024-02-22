@@ -104,6 +104,9 @@ class Header extends Component{
                     <Link to="hrlogin">
                         <button type="button" className="hr-login-button">Login</button>
                     </Link>
+                    <Link to="employedb">
+                        <button type="button" className="hr-login-button1">Employe Attendance</button>
+                    </Link>
                 </div>
                 <div className="hrcloud-d-card-container">
                     <div className="hrcloud-d-item-container">
@@ -118,10 +121,10 @@ class Header extends Component{
                         <GiGlobe className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">Global Payroll</h1>
-                            <p className="hrcloud-d-name-desc">Pay Your entire workforce</p>
+                            <p className="hrcloud-d-name-desc">Pay YoRecruitingur entire workforce</p>
                         </div> 
                     </div>
-                    <Link className="hrc-d-item-link" to="./Recruiting" >
+                    <Link className="hrc-d-item-link" to="Recruiting" >
                     <div className="hrcloud-d-item-container">
                         <FaSearchengin className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">
@@ -159,7 +162,7 @@ class Header extends Component{
                 <div className="hrcloud-d-card-container">
                     <div className="hrcloud-d-item-container">
                         <IoMdClock className="hrcloud-d-item-icon"/>
-                        <Link className="hrc-d-item-link" to="./employedb" >
+                        <Link className="hrc-d-item-link" to="empattendance" >
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">Time & Attandance</h1>
                             <p className="hrcloud-d-name-desc">Easyly Track & Aprove Time</p>
