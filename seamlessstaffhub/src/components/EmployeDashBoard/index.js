@@ -15,6 +15,8 @@ const EmployeDashBoard = () => {
     const [msg, setMsg] = useState()
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
+    const [errMsg,setErrMsg] = useState();
+    const [attendanceDataToday,setAttendanceDataToday] = useState([])
    
     //GET EMPLOYE DATA
     useEffect(() => {
@@ -24,6 +26,13 @@ const EmployeDashBoard = () => {
         alert(err);
       });
     }, []);
+
+    //GET TODAY ATTENDANCE DATA
+  useEffect(()=>{
+    axios.get('http://localhost:5000/empattendancetoday')
+    .then(res => setAttendanceDataToday(res.data))
+    .catch(err=>console.log(err));
+  },[])
 
     useEffect(() => {
       const interval = setInterval(() => {
@@ -43,16 +52,27 @@ const EmployeDashBoard = () => {
         }
     }
 
+    //MAKE TODAY EMPLOYES LIST
+    let attendenceList = []
+    for (let todayData of attendanceDataToday){
+      attendenceList.push(todayData.employeid)
+    }
+
     const onSubmitTimeFarm = () => {
         console.log(name)
         if (employeIdList.includes(employeId)){
             if (attendStatus==="TIMEIN"){
+              if (attendenceList.includes(employeId)){
+                setErrMsg(`${name} Alredy Attended`)
+                alert((`${name} Alredy Attended`))
+              }else{
                 axios.post("http://localhost:5000/attindance" , {employeId, name})
                 .then(res => {
                     alert("Successfully Updated")
                 })
                 .catch(err => console.log(err))
                 setMsg(`${name} Attended SuccessFully`)
+              }
             }else if (attendStatus==="TIMEOUT"){
                 axios.put("http://localhost:5000/attindance" , {employeId})
                 .then(res => {
@@ -82,6 +102,7 @@ const EmployeDashBoard = () => {
               </form>
             </div>
             {msg ? <p className="attend-msg">{msg}</p> : null}
+            {errMsg ? <p className="attend-err-msg">{errMsg}</p> : null}
        </div>
       )
     }

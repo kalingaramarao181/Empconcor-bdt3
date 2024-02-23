@@ -47,6 +47,13 @@
     background-color: #2e5c19;
 }
 
+.attend-err-msg{
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: #C73D52;
+}
+
 .emp-att-name{
     font-family: "Roboto";
     font-size: 28px;

@@ -2,8 +2,11 @@
 import React, { useState } from 'react'
 import './index.css'
 import axios from 'axios'
-const EmployeRegister = () => {
 
+
+
+const EmployeRegister = () => {
+  const randomColorList = ["#6DA762", "#A2644B", "#99A24B", "#4BA29A", "#4B74A2", "#674BA2", "#884BA2", "#A24B95", "#A24B65", "#A26F4B", "#F9508A"]
   const [name,setName]=useState('')
   const [userid,setUserid]=useState('')
   const [jobposition,setJobposition]=useState('')
@@ -16,10 +19,13 @@ const EmployeRegister = () => {
 
   const submithandler = (event)=>{
     event.preventDefault();
-    if(name,userid,jobposition,location,dateofbirth,email,number,address <=""){
+    const randomNumber = Math.floor(Math.random() * 10)
+    const randomcolor = randomColorList[randomNumber]
+    console.log(randomcolor)
+    if(name,userid,jobposition,location,dateofbirth,email,number,address <= ""){
       alert("please fill all")
     }else{
-      axios.post('http://localhost:5000/employeregester', {name,userid,jobposition,location,dateofbirth,email,number,address})
+      axios.post('http://localhost:5000/employeregester', {name,userid,jobposition,location,dateofbirth,email,number,address, randomcolor})
       .then(res=>{
       alert("submitted successfully")
     })

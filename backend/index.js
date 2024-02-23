@@ -160,9 +160,9 @@ app.post('/employedata', (req, res) => {
 
 //POST EMPLOYE DATA
 app.post('/employeregester',(req,res)=>{
-    const {name,userid,jobposition,location,dateofbirth,email,number,address} = req.body
-    const sql = "INSERT INTO employedata  (`name`,`employeid`,`position`,`location`,`dob`,`email`,`phoneno`,`address`) VALUES (?) ";
-     db.query(sql,[[name,userid,jobposition,location,dateofbirth,email,number,address]],(err,data)=>{
+    const {name,userid,jobposition,location,dateofbirth,email,number,address, randomcolor} = req.body
+    const sql = "INSERT INTO employedata  (`name`,`employeid`,`position`,`location`,`dob`,`email`,`phoneno`,`address`, `randomcolor`) VALUES (?) ";
+     db.query(sql,[[name,userid,jobposition,location,dateofbirth,email,number,address, randomcolor]],(err,data)=>{
         if (err) return res.json(err);
         return res.json(data)
      })
@@ -347,14 +347,17 @@ app.get("/empattendancetoday", (req, res) => {
 
 
 //GET EMPLOYE DETAILS DATA
-app.get("/emp-details/:id", (req, res) => {
+app.get("/emp-details", (req, res) => {
     const sql = `SELECT * FROM attendance WHERE employeid = ?`
-    const values = [req.params.id]
-    db.query(sql, [values], (err, data) => {
-        if (err) return res.json(err)
-        return res.json(data)
-    }) 
-})
+    const values = [req.query.empId]
+    console.log(values)
+    db.query(sql, values, (err, data) => {
+        if (err) {
+            return res.json(err)
+        }
+        res.json(data)
+    });
+});
 
 //GET ATTENDACE DATA TODAY
 app.get("/empattendanceeveryday", (req, res) => {
