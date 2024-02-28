@@ -166,22 +166,27 @@
 .product-item-link{
     color: rgb(8, 1, 1);
     text-decoration: none;
+    
 
 }
 
 .product-item:hover{
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1ADpy2voO3tFNgVNIYPzWtwzevZgzvpXC8A&usqp=CAU");
     color: white;
     background-size: cover;
+    background-color:#0088cc;    
+    transition: .5s;
 }
-.product-head{
+.product-head-1{
     font-size: 28px;
-}
-.product-head:hover{
     color: white;
 }
-.product-desc{
+.product-head-1:hover{
+    
+    color: rgb(32, 32, 32);
+}
+.product-desc-1{
     font-size: 18px;
+    color: white;
 }
 
 /*HR CLOUD INFORMATION */
@@ -240,17 +245,19 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    width: 280px;
 }
 
-.hrcloud-d-item-container{
+.hrcloud-d-item-container1{
     display: flex;
     flex-direction: row;
-    justify-content: flex-start;
-    align-items: flex-start;
-    width: 300px;
+    justify-content: space-between;
+    align-items: center;
+    width: 320px;
     border: 1px solid #d8d4d9;
     border-radius: 5px;
     padding: 10px;
+    margin-bottom: 5px;
 }
 
 .hrcloud-d-item-icon{
@@ -306,7 +313,7 @@
     align-items: flex-start;
 }
 
-.hrcloud-d-image{
+.hrcloud-d-image-1{
     height: 160px;
     width: 320px;
     border-radius: 10px;

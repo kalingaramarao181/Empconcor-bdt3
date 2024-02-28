@@ -43,7 +43,7 @@ render() {
                 <input value={password} type="password" onChange={this.onChangePassword} className='Ln-inputbox' placeholder='Enter Your Password'/>
                 <button type='submit' className='hr-button1'>LOGIN</button>
         </div>
-            <img className='Ln-img1' src="img\hr-management.png"/>
+            <img alt="image1" className='Ln-img1' src="img\hr-management.png"/>
         </form>
         </>
     )

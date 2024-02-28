@@ -97,7 +97,7 @@ class Header extends Component{
             <button onClick={this.onClickToHiden} type="button" className="hiden-page-button">
             <div className="hrcloud-d-container">
                 <div className="hrcloud-d-card-container">
-                    <img src="img\hrcloud.png" className="hrcloud-d-image" alt="hrcloud"/>
+                    <img src="img\hrcloud.png" className="hrcloud-d-image-1" alt="hrcloud"/>
                     <h1 className="hrcloud-d-head">HR Cloud</h1>
                     <p className="hrcloud-d-desc1">Manage and autonate the employe lifecycle</p>
                     <button className="hrcloud-d-button">Learn More</button>
@@ -109,7 +109,7 @@ class Header extends Component{
                     </Link>
                 </div>
                 <div className="hrcloud-d-card-container">
-                    <div className="hrcloud-d-item-container">
+                    <div className="hrcloud-d-item-container1">
                         <CgDollar className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">Us Payroll</h1>
@@ -117,7 +117,7 @@ class Header extends Component{
                         </div> 
                     </div>
     
-                    <div className="hrcloud-d-item-container">
+                    <div className="hrcloud-d-item-container1">
                         <GiGlobe className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">Global Payroll</h1>
@@ -125,7 +125,7 @@ class Header extends Component{
                         </div> 
                     </div>
                     <Link className="hrc-d-item-link" to="Recruiting" >
-                    <div className="hrcloud-d-item-container">
+                    <div className="hrcloud-d-item-container1">
                         <FaSearchengin className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">Recruiting</h1>
@@ -133,16 +133,14 @@ class Header extends Component{
                         </div> 
                     </div>
                     </Link>
-    
-                    <div className="hrcloud-d-item-container">
+                    <div className="hrcloud-d-item-container1">
                         <HiAcademicCap className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">Learning Management</h1>
                             <p className="hrcloud-d-name-desc">Automate Compliance</p>
                         </div> 
                     </div>
-    
-                    <div className="hrcloud-d-item-container">
+                    <div className="hrcloud-d-item-container1">
                         <FaObjectGroup className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">PEO Services</h1>
@@ -150,7 +148,7 @@ class Header extends Component{
                         </div> 
                     </div>
     
-                    <div className="hrcloud-d-item-container">
+                    <div className="hrcloud-d-item-container1">
                         <GiRoyalLove className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">Benifits</h1>
@@ -158,19 +156,17 @@ class Header extends Component{
                         </div> 
                     </div>
                 </div>
-    
                 <div className="hrcloud-d-card-container">
-                    <div className="hrcloud-d-item-container">
-                        <IoMdClock className="hrcloud-d-item-icon"/>
-                        <Link className="hrc-d-item-link" to="empattendance" >
-                        <div className="hrcloud-d-name-container">
-                            <h1 className="hrcloud-d-name">Time & Attandance</h1>
-                            <p className="hrcloud-d-name-desc">Easyly Track & Aprove Time</p>
+                    <Link className="hrc-d-item-link" to="empattendance" >
+                        <div className="hrcloud-d-item-container1">
+                            <IoMdClock className="hrcloud-d-item-icon"/>
+                            <div className="hrcloud-d-name-container">
+                                <h1 className="hrcloud-d-name">Time & Attendance</h1>
+                                <p className="hrcloud-d-name-desc">Align on Hiring & Comp</p>
+                            </div>
                         </div>
-                        </Link>
-                    </div>
-    
-                    <div className="hrcloud-d-item-container">
+                    </Link>
+                    <div className="hrcloud-d-item-container1">
                         <MdAccountTree className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">Headcount Planning</h1>
@@ -178,7 +174,7 @@ class Header extends Component{
                         </div> 
                     </div>
     
-                    <div className="hrcloud-d-item-container">
+                    <div className="hrcloud-d-item-container1">
                         <FaUserSecret className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">Performence Management</h1>
@@ -186,7 +182,7 @@ class Header extends Component{
                         </div> 
                     </div>
     
-                    <div className="hrcloud-d-item-container">
+                    <div className="hrcloud-d-item-container1">
                         <BsHeartPulseFill className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">Pulse</h1>
@@ -194,7 +190,7 @@ class Header extends Component{
                         </div> 
                     </div>
     
-                    <div className="hrcloud-d-item-container">
+                    <div className="hrcloud-d-item-container1">
                         <LiaKhandaSolid className="hrcloud-d-item-icon"/>
                         <div className="hrcloud-d-name-container">
                             <h1 className="hrcloud-d-name">ASO</h1>
@@ -214,8 +210,8 @@ class Header extends Component{
                     {productCardsList.map((eachItem) => (
                     <Link className="product-item-link" to={"/" + eachItem.uniqueId}>  
                         <li className="product-item">
-                            <h1 className="preoduct-head">{eachItem.productName}</h1>
-                            <p className="product-desc">{eachItem.content}</p>
+                            <h1 className="preoduct-head-1">{eachItem.productName}</h1>
+                            <p className="product-desc-1">{eachItem.content}</p>
                         </li>
                         </Link>
                     ))}
@@ -229,13 +225,13 @@ class Header extends Component{
             <button onClick={this.onClickToHiden} type="button" className="hiden-page-button">
             <div className="hrcloud-d-container">
             <div className="hrcloud-d-card-container">
-                <img src="img\itcloud.png" className="hrcloud-d-image" alt="itcloud"/>
+                <img src="img\itcloud.png" className="hrcloud-d-image-1" alt="itcloud"/>
                 <h1 className="hrcloud-d-head">IT Cloud</h1>
                 <p className="hrcloud-d-desc1">Remotly secure and configure your compeny's IT</p>
                 <button className="hrcloud-d-button">Learn More</button>
             </div>
             <div className="hrcloud-d-card-container">
-                <div className="hrcloud-d-item-container">
+                <div className="hrcloud-d-item-container1">
                     <AiTwotoneAppstore className="hrcloud-d-item-icon"/>
                     <div className="hrcloud-d-name-container">
                         <h1 className="hrcloud-d-name">App Management</h1>
@@ -243,7 +239,7 @@ class Header extends Component{
                     </div> 
                 </div>
 
-                <div className="hrcloud-d-item-container">
+                <div className="hrcloud-d-item-container1">
                     <FaComputer className="hrcloud-d-item-icon"/>
                     <div className="hrcloud-d-name-container">
                         <h1 className="hrcloud-d-name">Divice Management</h1>
@@ -262,13 +258,13 @@ class Header extends Component{
             <button onClick={this.onClickToHiden} type="button" className="hiden-page-button">
             <div className="hrcloud-d-container">
             <div className="hrcloud-d-card-container">
-                <img src="img\financecloud.webp" className="hrcloud-d-image" alt="financecloud"/>
+                <img src="img\financecloud.webp" className="hrcloud-d-image-1" alt="financecloud"/>
                 <h1 className="hrcloud-d-head">Finance Cloud</h1>
                 <p className="hrcloud-d-desc1">Control and report on your spend in one place</p>
                 <button className="hrcloud-d-button">Learn More</button>
             </div>
             <div className="hrcloud-d-card-container">
-                <div className="hrcloud-d-item-container">
+                <div className="hrcloud-d-item-container1">
                     <FaRupeeSign className="hrcloud-d-item-icon"/>
                     <div className="hrcloud-d-name-container">
                         <h1 className="hrcloud-d-name">Corparate Cards</h1>
@@ -276,7 +272,7 @@ class Header extends Component{
                     </div> 
                 </div>
 
-                <div className="hrcloud-d-item-container">
+                <div className="hrcloud-d-item-container1">
                     <GiGlobe className="hrcloud-d-item-icon"/>
                     <div className="hrcloud-d-name-container">
                         <h1 className="hrcloud-d-name">Expense Management</h1>
@@ -284,7 +280,7 @@ class Header extends Component{
                     </div> 
                 </div>
 
-                <div className="hrcloud-d-item-container">
+                <div className="hrcloud-d-item-container1">
                     <FaSearchengin className="hrcloud-d-item-icon"/>
                     <div className="hrcloud-d-name-container">
                         <h1 className="hrcloud-d-name">Global Payroll</h1>
@@ -292,7 +288,7 @@ class Header extends Component{
                     </div> 
                 </div>
 
-                <div className="hrcloud-d-item-container">
+                <div className="hrcloud-d-item-container1">
                     <HiAcademicCap className="hrcloud-d-item-icon"/>
                     <div className="hrcloud-d-name-container">
                         <h1 className="hrcloud-d-name">Headcount Planning</h1>
@@ -300,7 +296,7 @@ class Header extends Component{
                     </div> 
                 </div>
 
-                <div className="hrcloud-d-item-container">
+                <div className="hrcloud-d-item-container1">
                     <FaObjectGroup className="hrcloud-d-item-icon"/>
                     <div className="hrcloud-d-name-container">
                         <h1 className="hrcloud-d-name">Bill Pay</h1>
@@ -310,7 +306,7 @@ class Header extends Component{
             </div>
 
             <div className="hrcloud-d-card-container">
-                <div className="hrcloud-d-item-container">
+                <div className="hrcloud-d-item-container1">
                     <IoMdClock className="hrcloud-d-item-icon"/>
                     <div className="hrcloud-d-name-container">
                         <h1 className="hrcloud-d-name">US Payroll</h1>

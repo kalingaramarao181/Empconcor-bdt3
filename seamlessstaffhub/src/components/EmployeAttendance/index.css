@@ -42,7 +42,7 @@ margin: 20px;
     padding: 20px;
 }
 
-.table{
+.table1{
     border-bottom: 1px solid black;
 
 }
@@ -118,6 +118,8 @@ th{
 .emp-data-view-container{
     display: flex;
     flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
 }
 
 .emp-data-view-list{

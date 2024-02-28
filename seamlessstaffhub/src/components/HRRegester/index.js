@@ -61,7 +61,7 @@ class HRRegister extends Component {
   }
 
   validateFarmData = () => {
-    const {name, email, password, phoneNo, compeny, errMsg} = this.state
+    const {name, email, password, phoneNo, compeny} = this.state
     if (name===""){
       this.setState({errMsg: "Required Name"})
     }else if (email===""){

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios';
 import './index.css'
-import {BrowserRouter, Switch, Route} from "react-router-dom"
 const EmployeAttendance = () => {
   const [employe,setEmploye] = useState([])
   const [attendanceData,setAttendanceData] = useState([])
@@ -103,8 +102,8 @@ const EmployeAttendance = () => {
       )
     }else if(btnStatus === "Today Present"){
       return (
-          <table>
-        <tr className="table">
+          <table className='emp-work-hrs-container'>
+        <tr className="table1">
           <th className="db-item-name">Check</th>
           <th className="db-item-name">Name</th>
           <th className="db-item-name">Employe Id</th>
@@ -112,7 +111,7 @@ const EmployeAttendance = () => {
           <th className="db-item-name">TimeIn</th>
         </tr>
       {attendanceData.map((data)=>(
-        <tr  className="table">
+        <tr  className="table1">
           <td className="db-item-name"><button type="button" className="edit-button-check"><input className="checkbox-ele" type="checkbox"/></button></td>
           <td className="db-item-name">{data.name}</td>
           <td className="db-item-name">{data.employeid}</td>
@@ -124,8 +123,8 @@ const EmployeAttendance = () => {
       )
     }else if(btnStatus === "Attandance Data"){
       return (
-          <table>
-            <tr className="table">
+          <table className='emp-work-hrs-container'>
+            <tr className="table1">
               <th  className="db-item-name1">Check</th>
               <th  className="db-item-name1">Date</th>
               <th  className="db-item-name1">Name</th>
@@ -134,7 +133,7 @@ const EmployeAttendance = () => {
               <th  className="db-item-name1">TimeOut</th>
             </tr>
             {everyDayAttendanceData.map((data)=>(
-            <tr  className="table">
+            <tr  className="table1">
               <td><button type="button" className="edit-button-check"><input className="checkbox-ele" type="checkbox"/></button></td>
               <td  className="db-item-name">{data.date.slice(0,10)}</td>
               <td  className="db-item-name">{data.name}</td>
@@ -147,8 +146,8 @@ const EmployeAttendance = () => {
       )
     }else if(btnStatus === "Employe Details"){
       return(
-        <table>
-        <tr className="table">
+        <table className='emp-work-hrs-container'>
+        <tr className="table1">
           <th  className="db-item-name1">CHECK</th>
           <th   className="db-item-name1">NAME</th>
           <th  className="db-item-name1">EMPLOYE ID</th>
@@ -160,7 +159,7 @@ const EmployeAttendance = () => {
           <th  className="db-item-name1">ADDRESS</th>
         </tr>
       {employe.map((data)=>(
-        <tr className="table">
+        <tr className="table1">
           <td  className="db-item-name1"><button type="button" className="edit-button-check"><input className="checkbox-ele" type="checkbox"/></button></td>
           <td  className="db-item-name1">{data.name}</td>
           <td  className="db-item-name1">{data.employeid}</td>
@@ -182,9 +181,9 @@ const EmployeAttendance = () => {
     <div className='attendance-container'>
       <h1 className='Hre-head1'>EMPLOYEE ATTENDACE DATA</h1>
       <div className='Hre-card1'>
-        <button onClick={() => setBtnStatus("Employe Attendance")} className='Hre-button1'>Employe Attendance<p>{employe.length}</p></button>
+        <button onClick={() => setBtnStatus("Employe Attendance")} className='Hre-button1'>Employe Wise Attendance</button>
         <button onClick={() => setBtnStatus("Today Present")} className='Hre-button1'>Today Present<p>{attendanceData.length}</p></button>
-        <button onClick={() => setBtnStatus("Attandance Data")} className='Hre-button1'>Attandance Data<p>{everyDayAttendanceData.length}</p></button>
+        <button onClick={() => setBtnStatus("Attandance Data")} className='Hre-button1'>Total Attandance Data<p>{everyDayAttendanceData.length}</p></button>
         <button onClick={() => setBtnStatus("Employe Details")} className='Hre-button1'>Employe Details<p>{employe.length}</p></button>
       </div>    
           <h1 className='emp-bt-status-name'>{btnStatus + " :"}</h1>

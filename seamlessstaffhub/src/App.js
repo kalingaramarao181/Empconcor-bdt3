@@ -1,4 +1,3 @@
-
 import './App.css';
 import Header from './components/Header';
 import HRCloud from './components/HRCloud';
@@ -12,18 +11,17 @@ import HRRegister from './components/HRRegester';
 import ProtectedRoute from './components/ProtuctedRoute';
 import HrLogin from './components/HrLogin';
 import SendMail from './components/SendMail';
+import FinanceCloud from './components/FinanceCloud';
 
 import { BrowserRouter, Route, Switch } from "react-router-dom"
-import LoginView from './components/LoginView';
 import EmployeDashBoard from './components/EmployeDashBoard';
 import EmployeAttendance from './components/EmployeAttendance';
 import EmployeRegister from './components/EmployeRegester';
-import EmployeDetails from './components/EmployeDetails';
+import ITCloud from './components/ITCloud';
+// import FileUploadForm from './components/FileUploadFarm';
 
 
 const  App = () => {
-
-  
   return (
     <BrowserRouter>
     <Header />
@@ -39,9 +37,11 @@ const  App = () => {
           <Route path="/hrlogin" exact component={HrLogin} />
           <Route path="/send-mail" exact component={SendMail} />
           <Route path="/employedb" exact component={EmployeDashBoard} />
-          <Route path="/emp-details/:id" exact component={EmployeDetails} />
+          <Route path="/FINANCECLOUD" exact component={FinanceCloud} />
+          <Route path="/ITCLOUD" exact component={ITCloud} />
           <ProtectedRoute path="/empregester" exact component={EmployeRegister} />
           <ProtectedRoute path="/empattendance" exact component={EmployeAttendance} />
+          {/* <Route path="/profile" exact component={FileUploadForm} /> */}
         </Switch>
     </BrowserRouter>
     )

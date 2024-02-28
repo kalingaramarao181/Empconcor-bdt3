@@ -1,17 +1,13 @@
 import "./index.css"
 import { useEffect, useState } from "react";
 import React from "react";
-import Cookies from "js-cookie";
 import axios from "axios";
-import EmployeAttendance from "../EmployeAttendance";
 import moment from "moment";
 
 const EmployeDashBoard = () => {
-    const employe = Cookies.get("jwt_token")
     const [employeData, setEmployeData] = useState([])
     const [attendStatus, setAttendStatus] = useState("TIMEIN")
     const [employeId, setEmployeId] = useState("")
-    const [empName, setEmpName] = useState("")
     const [msg, setMsg] = useState()
     const [date, setDate] = useState('');
     const [time, setTime] = useState('');
@@ -107,7 +103,6 @@ const EmployeDashBoard = () => {
       )
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  const token =  Cookies.get("jwt_token")
   return(<>{renderSelectedPage()}</>)
   }
 
