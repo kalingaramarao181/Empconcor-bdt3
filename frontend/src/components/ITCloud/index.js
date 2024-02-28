@@ -32,7 +32,7 @@ const ITCloud = () => {
           < div className='d-flex flex-row it-bg'>
             <div className='it-bg1'>
               <Col xs={6} md={4}>
-                <Image alt="image1" style={{ height: "60px" }} src="images\10261140.png" rounded />
+                <Image alt="image1" style={{ height: "60px" }} src="images\image_g.png" rounded />
                 <p className='it-p1'>Onboarding</p>
               </Col>
               <Col xs={6} md={4}>
@@ -40,12 +40,12 @@ const ITCloud = () => {
                 <p className='it-p2'>Employee Changes</p>
               </Col>
               <Col xs={6} md={4}>
-                <Image alt="image1" className='it-img1' style={{ height: "60px" }} src="images\10261202__1_-removebg-preview.png" roundedCircle />
+                <Image alt="image1" className='it-img1' style={{ height: "60px" }} src="images\image_h.png" roundedCircle />
                 <p className='it-p1'>Offboarding</p>
               </Col>
             </div>
             <div class="embed-responsive embed-responsive-16by9" className='it-bg2'>
-              <iframe style={{ height: "400px", width: "600px" }} class="embed-responsive-item" src="https://rippling.imgix.net/images/ITCloud-DeviceOnboarding_enUS.mp4" allowfullscreen></iframe>
+              <iframe title='head' style={{ height: "400px", width: "600px" }} class="embed-responsive-item" src="https://rippling.imgix.net/images/ITCloud-DeviceOnboarding_enUS.mp4" allowfullscreen></iframe>
             </div>
             <div className='it-bg3'>
               <Col xs={6} md={4}>
@@ -53,7 +53,7 @@ const ITCloud = () => {
                 <p className='it-p11'>Apps</p>
               </Col>
               <Col xs={6} md={4}>
-                <Image alt="image1" className='it-img1' style={{ height: "60px" }} src="images\1864319.png" roundedCircle />
+                <Image alt="image1" className='it-img1' style={{ height: "60px" }} src="images\image_m.png" roundedCircle />
                 <p className='it-p3'>Devices</p>
               </Col>
               <Col xs={6} md={4}>
@@ -70,12 +70,12 @@ const ITCloud = () => {
       </div>
       <div className='d-flex flex-row it-bg12'>
         <div className='it-bg10'>
-          <img alt="image1" style={{ height: "30px" }} src="images\25694.png" />
+          <img alt="image1" style={{ height: "30px" }} src="images\image_n.png" />
           <h1 className='it-head10'>Set up new hires 10x faster</h1>
           <p className='it-para10'>Emp Concor next-generation workflow automation allows anyone—from HR to IT—to fully set up employee’s computers and apps in just 90 seconds.</p>
         </div>
         <div className='it-bg11'>
-          <img alt="image1" style={{ height: "30px" }} src="images\40358.png" />
+          <img alt="image1" style={{ height: "30px" }} src="images\image_o.png" />
           <h1 className='it-head10'>Quickly secure your company</h1>
           <p className='it-para10'>Deploy security best practices across your apps and devices in minutes. Just toggle on a security feature, like SSO, and customize it to fit your needs.</p>
         </div>

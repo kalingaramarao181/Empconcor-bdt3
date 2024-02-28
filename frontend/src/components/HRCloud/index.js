@@ -34,7 +34,7 @@ const HRCloud = () => {
         <Container>
           <Row>
             <Col xs={6} md={4}>
-              <Image alt="image1" style={{ height: "100px" }} src="images\10261140.png" rounded />
+              <Image alt="image1" style={{ height: "100px" }} src="images\image_g.png" rounded />
               <p className='hr-p1'>Onboarding</p>
             </Col>
             <Col xs={6} md={4}>
@@ -42,7 +42,7 @@ const HRCloud = () => {
               <p className='hr-p2'>Employee Changes</p>
             </Col>
             <Col xs={6} md={4}>
-              <Image alt="image1" style={{ height: "100px" }} src="images\10261202__1_-removebg-preview.png" roundedCircle />
+              <Image alt="image1" style={{ height: "100px" }} src="images\image_h.png" roundedCircle />
               <p className='hr-p1'>Offboarding</p>
             </Col>
           </Row>

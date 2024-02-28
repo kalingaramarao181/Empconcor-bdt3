@@ -31,7 +31,7 @@ const FinanceCloud = () => {
       <div>
         <div className='d-flex flex-row it-bg12'>
           <div className='it-bg10'>
-            <img alt="image1" style={{ height: "50px" }} src="images\10746655.png" />
+            <img alt="image1" style={{ height: "50px" }} src="images\image_a.png" />
             <h1 className='it-head10'>Expense Management</h1>
             <p className='Fn-para10'>Review, approve, and reimburse employee expenses faster than ever before.</p>
           </div>
@@ -100,7 +100,7 @@ const FinanceCloud = () => {
         </div>
         <div className='bg7 d-flex'>
           <div className='card17'>
-            <img alt="image1" style={{ height: "50px", marginLeft: "20px" }} src="images\10261200.png" />
+            <img alt="image1" style={{ height: "50px", marginLeft: "20px" }} src="images\image_b.png" />
             <p className='para17'>
               <ul>
                 <li>Remove from payroll</li>

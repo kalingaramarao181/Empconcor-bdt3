@@ -43,11 +43,11 @@ const Home = () => {
                             </div>
                             <div className='d-flex flex-row'>
                                 <div className='d-flex flex-row card9' >
-                                    <img alt="image1" className='img5' src="images\49117.png" />
+                                    <img alt="image1" className='img5' src="images\image_c.png" />
                                     <p style={{ paddingLeft: "10px", fontWeight: "bold" }}>T & A</p>
                                 </div>
                                 <div className='d-flex flex-row card9' >
-                                    <img alt="image1" className='img5' src="images\4415875.png" />
+                                    <img alt="image1" className='img5' src="images\image_d.png" />
                                     <p style={{ paddingLeft: "10px", fontWeight: "bold" }}>Recruting</p>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@ const Home = () => {
                                     <p style={{ paddingLeft: "10px", fontWeight: "bold" }}>Pulse</p>
                                 </div>
                                 <div className='d-flex flex-row card9' >
-                                    <img alt="image1" className='img5' src="images\131-1318263_group-people-communication-message-talk-comments-people-management.png" />
+                                    <img alt="image1" className='img5' src="images\image_e.png" />
                                     <p style={{ paddingLeft: "10px", fontWeight: "bold" }}>PEO</p>
                                 </div>
                             </div>
@@ -84,7 +84,7 @@ const Home = () => {
                             </div>
                             <div className='d-flex flex-row'>
                                 <div className='d-flex flex-row card91' >
-                                    <img alt="image1" className='img5' src="images\7888512.png" />
+                                    <img alt="image1" className='img5' src="images\image_f.png" />
                                     <p style={{ paddingLeft: "10px", fontWeight: "bold" }}>Inventory Management</p>
                                 </div>
                             </div>
@@ -149,15 +149,15 @@ const Home = () => {
                     <p className='para10'>Whether you’ve got a small team in the US or a fully distributed workforce <span className='span12'>around the world</span>  Emp Concor gives you a  <span className='span12'>single system</span> to hire, pay, and manage employees and contractors.</p>
                     <div className='card15'>
                         <div className='d-flex flex-row card14' >
-                            <img alt="image1" style={{ height: "50px" }} src="images\70.4d856f09.png" />
+                            <img alt="image1" style={{ height: "50px" }} src="images\image_i.png" />
                             <p className='para14' >Onboard employees and contractors in 90 seconds</p>
                         </div>
                         <div className='d-flex flex-row card14' >
-                            <img alt="image1" style={{ height: "50px" }} src="images\11024036.png" />
+                            <img alt="image1" style={{ height: "50px" }} src="images\image_j.png" />
                             <p className='para14' >Pay everyone in their local currency—in minutes</p>
                         </div>
                         <div className='d-flex flex-row card14' >
-                            <img alt="image1" style={{ height: "50px" }} src="images\1736314.png" />
+                            <img alt="image1" style={{ height: "50px" }} src="images\image_k.png" />
                             <p className='para14' >Manage HR, IT, and Finance in one global system</p>
                         </div>
                         <div className='d-flex flex-row card14' >
@@ -191,7 +191,7 @@ const Home = () => {
             </div>
             <div className='bg7 d-flex'>
                 <div className='card17'>
-                    <img alt="image1" style={{ height: "50px" }} src="images\4502163.png" />
+                    <img alt="image1" style={{ height: "50px" }} src="images\image_l.png" />
                     <p className='para17'>See how you can automate your workflows and reporting with Emp Concor growing library of pre-built templates.</p>
                     <h1 className='head17'>Browse All Templates</h1>
                 </div>

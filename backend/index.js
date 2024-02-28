@@ -19,6 +19,7 @@ app.use(express.json());
 
 app.use(cors());
 
+//CONNECTION OBJECT
 const db = mysql.createConnection({
     host: "localhost",
     user: "root",
@@ -60,8 +61,6 @@ app.post('/hrlogin', (req, res) => {
         }
     })
 })
-
-
 //EMPLOYE LOGIN API
 app.post('/employelogin', (req, res) => {
     const {username, password} =  req.body
@@ -78,8 +77,6 @@ app.post('/employelogin', (req, res) => {
         }
     })
 })
-
-
 //POST HR REGESTER API
 app.post('/hrdetails', (req, res) => {
     const dbSql = `SELECT * FROM hrdetails WHERE email = '${req.body.email}'`
@@ -104,8 +101,6 @@ app.post('/hrdetails', (req, res) => {
     })
     
 })
-
-
 //POST CANDIT REGESTER
 app.post('/user', (req, res) => {
     const {name, position, experience, location, salary, email, phoneNo, about, address} = req.body
@@ -116,13 +111,9 @@ app.post('/user', (req, res) => {
         return res.json(data)
     })
 })
-
-
-
 //POST USER TO INTERVIEW API
 app.post('/interviewdata', (req, res) => {
     const {accesscode, name, position, experience, location, salary, email, phoneno, about, address} = req.body
-    console.log(phoneno)
     const sql = "INSERT INTO interviewdata (`accesscode`, `name`, `position`, `experience`, `location`, `salary`, `email`, `phoneno`, `about`, `address`) VALUES (?)";
     const values = [accesscode, name, position, experience, location, salary, email, phoneno, about, address]
     db.query(sql, [values], (err, data) => {
@@ -130,7 +121,6 @@ app.post('/interviewdata', (req, res) => {
         return res.json(data)
     })
 })
-
 //POST USER TO OFFERACPDATA
 app.post('/offeracpdata', (req, res) => {
     const {accesscode, name, position, experience, location, salary, email, phoneno, about, address} = req.body
@@ -141,8 +131,6 @@ app.post('/offeracpdata', (req, res) => {
         return res.json(data)
     })
 })
-
-
 //POST USER TO ONBOARDING
 app.post('/onboarding', (req, res) => {
     const {accesscode, name, position, experience, location, salary, email, phoneno, about, address} = req.body
@@ -153,8 +141,6 @@ app.post('/onboarding', (req, res) => {
         return res.json(data)
     })
 })
-
-
 //POST USER TO EMPLOYE
 app.post('/employedata', (req, res) => {
     const {accesscode, name, position, experience, location, salary, email, phoneno, about, address, password, role} = req.body
@@ -165,7 +151,6 @@ app.post('/employedata', (req, res) => {
         return res.json(data)
     })
 })
-
 //POST EMPLOYE DATA
 app.post('/employeregester',(req,res)=>{
     const {name,userid,jobposition,location,dateofbirth,email,number,address, randomcolor} = req.body
@@ -193,26 +178,30 @@ app.post('/attindance', (req, res) => {
     const sql = "INSERT INTO attendance (`employeid`, `name`, `date`, `timein`, `timeout`) VALUES (?)";
     const values = [employeId,name,dbDate, dbtime, timeOut]
     db.query(sql, [values], (err, data) => {
-        if(err) return console.log(err)
+        if(err) return res.json(err)
         return res.json(data)
     })
 })
 
 //POST EMPLOYE PROFILE
-// app.post('/profile', upload.single('avatar'), (req, res) => {
-//     if (!req.file) {
-//       return res.status(400).send('No file uploaded.');
-//     }
+/*app.post('/profile', upload.single('avatar'), (req, res) => {
+    if (!req.file) {
+      return res.status(400).send('No file uploaded.');
+    }
     
-//     const { avatar } = req.file;
+    const { avatar } = req.file;
   
-//     avatar.mv(path.join(assertsFolder, avatar.name), (err) => {
-//       if (err) {
-//         return res.status(500).send(err);
-//       }
-//       res.status(200).send('File uploaded successfully');
-//     });
-//   });
+    avatar.mv(path.join(assertsFolder, avatar.name), (err) => {
+      if (err) {
+        return res.status(500).send(err);
+      }
+      res.status(200).send('File uploaded successfully');
+    });
+  });*/
+
+
+
+
 
 //PUT EMPLOYE ATTENDANCE
 app.put('/attindance', (req, res) => {
@@ -234,7 +223,6 @@ app.put('/attindance', (req, res) => {
             console.error(err);
             return res.status(500).send("Internal Server Error");
         }
-        console.log(data);
         res.send("Update successful");
     });
 });
@@ -283,7 +271,6 @@ app.delete("/onboarding/:id", (req, res) => {
     })
 })
 
-
 //GET USER API
 app.get("/user", (req, res) => {
     const sql = "SELECT * FROM user"
@@ -296,7 +283,6 @@ app.get("/user", (req, res) => {
 
 //GET HRDetails API
 app.get("/hrdetails", (req, res) => {
-    console.log(req.body)
     const sql = `SELECT * FROM hrdetails`
     db.query(sql, (err, data) => {
         if (err) return res.json(err)
@@ -307,7 +293,6 @@ app.get("/hrdetails", (req, res) => {
 
 //GET ADMIN API
 app.get("/admindata", (req, res) => {
-    console.log(req.body)
     const sql = `SELECT * FROM admin`
     db.query(sql, (err, data) => {
         if (err) return res.json(err)
@@ -318,7 +303,6 @@ app.get("/admindata", (req, res) => {
 
 //GET INTERVIEW DATA
 app.get("/interviewdata", (req, res) => {
-    console.log(req.body)
     const sql = `SELECT * FROM interviewdata`
     db.query(sql, (err, data) => {
         if (err) return res.json(err)
@@ -328,7 +312,6 @@ app.get("/interviewdata", (req, res) => {
 
 //GET OFFER DATA
 app.get("/offeracpdata", (req, res) => {
-    console.log(req.body)
     const sql = `SELECT * FROM offerdata`
     db.query(sql, (err, data) => {
         if (err) return res.json(err)
@@ -339,14 +322,12 @@ app.get("/offeracpdata", (req, res) => {
 
 //GET ONBOARDING DATA
 app.get("/onboarding", (req, res) => {
-    console.log(req.body)
     const sql = `SELECT * FROM onboardingdata`
     db.query(sql, (err, data) => {
         if (err) return res.json(err)
         return res.json(data)
     }) 
 })
-
 
 //GET EMPLOYE DATA
 app.get("/employedata", (req, res) => {
@@ -369,12 +350,10 @@ app.get("/empattendancetoday", (req, res) => {
     }) 
 })
 
-
 //GET EMPLOYE DETAILS DATA
 app.get("/emp-details", (req, res) => {
     const sql = `SELECT * FROM attendance WHERE employeid = ?`
     const values = [req.query.empId]
-    console.log(values)
     db.query(sql, values, (err, data) => {
         if (err) {
             return res.json(err)
