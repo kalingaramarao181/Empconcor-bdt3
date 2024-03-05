@@ -186,3 +186,24 @@ th{
     padding: 10px;
     border-radius: 6px;
 }
+
+.send-mail-container{
+    display: flex;
+    flex-direction: column;
+}
+.send-mail-input{
+    margin-bottom: 10px;
+    border-radius: 6px;
+    padding: 10px;
+}
+.send-mail-btn{
+    border: none;
+    background-color: #8a6e0a;
+    color: white;
+    border-radius: 6px;
+    margin-top: 10px;
+}
+.send-mail-textarea{
+    border-radius: 6px;
+    padding: 10px;
+}

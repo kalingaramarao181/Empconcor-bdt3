@@ -22,7 +22,7 @@ const EmployeRegister = () => {
     const randomNumber = Math.floor(Math.random() * 10)
     const randomcolor = randomColorList[randomNumber]
     console.log(randomcolor)
-    if(name,userid,jobposition,location,dateofbirth,email,number,address <= ""){
+    if(name === "" && userid === "" && jobposition === "" && location === "" && dateofbirth === "" && email === "" && number === "" && address === ""){
       alert("please fill all")
     }else{
       axios.post('http://localhost:5000/employeregester', {name,userid,jobposition,location,dateofbirth,email,number,address, randomcolor})

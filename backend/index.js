@@ -411,28 +411,36 @@ app.post('/send-email', (req, res) => {
     const { to, subject, body } = req.body;
   
     const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'ramkalinga0@gmail.com',
-        pass: 'Ram.@123',
-      },
+        host: "smtp.gmail.com",
+        port: 465, // or 587 for TLS
+        secure: true, // true for 465, false for other ports
+        auth: {
+            user: 'ramaraok828@gmail.com',
+            pass: "szzbfiglzczwsnmu"
+        }
     });
   
-    const mailOptions = {
-      from: 'ramkalinga0@gmail.com',
-      to,
-      subject,
-      text: body,
+    const options = {
+        from: "ramaraok828@gmail.com",
+        to: to,
+        subject: subject,
+        text: body
     };
   
-    transporter.sendMail(mailOptions, (error, info) => {
-      if (error) {
-        console.log(error)
-        return res.status(500).send(error.toString());
-      }
-      res.status(200).send('Email sent: ' + info.response);
+    transporter.sendMail(options, function (err, success) {
+        if (err) {
+            response.json(err);
+        } else {
+            response.json("Successfully Send");
+        }
     });
 });
+
+
+
+
+
+
 
 //DUMMY 2
 app.post('/employee', (req, res) => {

@@ -4,6 +4,7 @@ import axios from 'axios';
 import {Link} from "react-router-dom"
 import Cookies from "js-cookie";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import Popup from "../Popup";
 
 const Admin = () => {
   const [userData, setAdminData] = useState([]);
@@ -20,6 +21,8 @@ const Admin = () => {
   const [offCheckboxStatus, setOffCheckboxStatus] = useState({isChecked:false, userId:""})
   const [onbCheckboxStatus, setONBCheckboxStatus] = useState({isChecked:false, userId:""})
   const [role, setRole] = useState("")
+  const [emailData, setEmailData] = useState({to: '', subject: '', body: ''});
+  const [isPopupOpen, setPopupOpen] = useState(false);
   const [dataView, setDataView] = useState("APPLICATIONS")
   const token = Cookies.get("jwt_token");
   const loginStatus = Cookies.get("login_status")
@@ -257,6 +260,36 @@ useEffect(() => {
     }
   }
 
+  //POST MAIL API
+  const handleSendEmail = () => {
+    axios.post('http://localhost:5000/send-email', emailData)
+      .then(response => {
+        console.log(response.data);
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    setEmailData({to:"", subject:"", body:"" })
+  };
+
+
+  const openPopup = () => {
+    setPopupOpen(true);
+  };
+
+  const closePopup = () => {
+    setPopupOpen(false);
+  };
+
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setEmailData(prevData => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
 
 //////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////
@@ -331,6 +364,15 @@ useEffect(() => {
               <td className="db-item-name">{user.email}</td>
               <td className="db-item-name">{user.phoneno}</td>
               <td className="db-item-name">{user.address}</td>
+              <td><button type="button" className={`edit-button`} onClick={() => openPopup(user.id)}>Send Mail</button></td>
+              <Popup isOpen={isPopupOpen} onClose={closePopup}>
+                <farm className="send-mail-container">
+                  <input className="send-mail-input" type="text" name="to" placeholder="Recipient Email" onChange={handleChange} />
+                  <input className="send-mail-input" type="text" name="subject" placeholder="Subject" onChange={handleChange} />
+                  <textarea className="send-mail-textarea" cols={20} rows={4} name="body" placeholder="Email Body" onChange={handleChange}></textarea>
+                  <button className="send-mail-btn" onClick={handleSendEmail}>Send Email</button>
+                </farm>
+              </Popup>
               <td><button type="button" className={offCheckboxStatus.isChecked && offCheckboxStatus.userId === user.id ? `edit-button` : `edit-button-stop`} onClick={e => onClickAddToOnboardingSub(user.id)}>Submit</button></td>
               <td><button type="button" className="delete-button" onClick={e => onClickOffDelete(user.id)}><RiDeleteBin5Line /></button></td>
             </tr>

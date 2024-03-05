@@ -30,7 +30,7 @@ function SendMail() {
     <div>
       <input type="text" name="to" placeholder="Recipient Email" onChange={handleChange} />
       <input type="text" name="subject" placeholder="Subject" onChange={handleChange} />
-      <textarea name="body" placeholder="Email Body" onChange={handleChange}></textarea>
+      <textarea cols={20} rows={4} name="body" placeholder="Email Body" onChange={handleChange}></textarea>
       <button onClick={handleSendEmail}>Send Email</button>
     </div>
   );

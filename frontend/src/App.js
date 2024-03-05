@@ -41,6 +41,7 @@ const  App = () => {
           <Route path="/ITCLOUD" exact component={ITCloud} />
           <ProtectedRoute path="/empregester" exact component={EmployeRegister} />
           <ProtectedRoute path="/empattendance" exact component={EmployeAttendance} />
+          <Route path="/send-mail" exact component={SendMail} />
           {/* <Route path="/profile" exact component={FileUploadForm} /> */}
         </Switch>
     </BrowserRouter>
