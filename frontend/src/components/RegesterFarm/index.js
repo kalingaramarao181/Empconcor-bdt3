@@ -156,15 +156,15 @@ class Register extends Component {
     <farm className='Rt-bg1' onSubmit={this.submitRegesterFarm}>
         <h1 className='Rt-head1'>EmpConcor Register</h1>
         <div className='Rt-card1'>
-          <input className='Rt-input1' onBlur={this.onBlurName} value={name} type="text" onChange={this.onChangeName} placeholder='   Enter Your Full Name' /><br/>
-          <input className='Rt-input1' onBlur={this.onBlurPosition} value={position} type="text" onChange={this.onChangePosition} placeholder='   Enter Your Job Position' /><br/>
-          <input className='Rt-input1' onBlur={this.onBlurExperience} value={experience} type="text" onChange={this.onChangeExperience} placeholder='   Enter Your  Experience' /><br/>
-          <input className='Rt-input1' onBlur={this.onBlurLocation} value={location} type="text" onChange={this.onChangeLocation} placeholder='   Enter Your Location' /><br/>
-          <input className='Rt-input1' onBlur={this.onBlurSalary} value={salary} type="text" onChange={this.onChangeSalary} placeholder='   Enter Your Current Salary' /><br/>
-          <input className='Rt-input1' onBlur={this.onBlurEmail} value={email} type="text" onChange={this.onChangeEmail} placeholder='   Enter Your Email' /><br/>
-          <input className='Rt-input1' onBlur={this.onBlurNumber} value={phoneNo} type="text" onChange={this.onChangeNumber} placeholder='   Enter Your Contact Number' /><br/>
-          <input className='Rt-input1' onBlur={this.onBlurAbout} value={about} type="text" onChange={this.onChangeAbout} placeholder='   Enter How did you here about us' /><br/>
-          <textarea col="50" rows="5" onBlur={this.onBlurAddress} className='Rt-textarea' value={address} type="text" onChange={this.onChangeAddress} placeholder='   Enter Your Address Here' /><br/>
+          <input className='Rt-input1' style={{color: "white"}} onBlur={this.onBlurName} value={name} type="text" onChange={this.onChangeName} placeholder='   Enter Your Full Name' /><br/>
+          <input className='Rt-input1' style={{color: "white"}} onBlur={this.onBlurPosition} value={position} type="text" onChange={this.onChangePosition} placeholder='   Enter Your Job Position' /><br/>
+          <input className='Rt-input1' style={{color: "white"}} onBlur={this.onBlurExperience} value={experience} type="text" onChange={this.onChangeExperience} placeholder='   Enter Your  Experience' /><br/>
+          <input className='Rt-input1' style={{color: "white"}} onBlur={this.onBlurLocation} value={location} type="text" onChange={this.onChangeLocation} placeholder='   Enter Your Location' /><br/>
+          <input className='Rt-input1' style={{color: "white"}} onBlur={this.onBlurSalary} value={salary} type="text" onChange={this.onChangeSalary} placeholder='   Enter Your Current Salary' /><br/>
+          <input className='Rt-input1' style={{color: "white"}} onBlur={this.onBlurEmail} value={email} type="text" onChange={this.onChangeEmail} placeholder='   Enter Your Email' /><br/>
+          <input className='Rt-input1' style={{color: "white"}} onBlur={this.onBlurNumber} value={phoneNo} type="text" onChange={this.onChangeNumber} placeholder='   Enter Your Contact Number' /><br/>
+          <input className='Rt-input1' style={{color: "white"}} onBlur={this.onBlurAbout} value={about} type="text" onChange={this.onChangeAbout} placeholder='   Enter How did you here about us' /><br/>
+          <textarea col="50" rows="5" style={{color: "white"}} onBlur={this.onBlurAddress} className='Rt-textarea' value={address} type="text" onChange={this.onChangeAddress} placeholder='   Enter Your Address Here' /><br/>
           <button type="submit" onClick={this.submitRegesterFarm} className={inputStatus ? "Rt-button1-err" :'Rt-button1'}>Submit</button>
           <p className="r-err-msg">{errMsg}</p>
         </div>

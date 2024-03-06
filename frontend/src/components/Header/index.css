@@ -518,3 +518,12 @@
 .hr-login-button:hover{
     background-color: #316ade;
 }
+
+.card {
+    opacity: 0;
+    transition: opacity 0.5s ease; /* Specify the property, duration, and timing function */
+  }
+  
+.card.show {
+    opacity: 1;
+}

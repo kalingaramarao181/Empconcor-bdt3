@@ -273,8 +273,9 @@ useEffect(() => {
   };
 
 
-  const openPopup = () => {
+  const openPopup = (mail) => {
     setPopupOpen(true);
+    setEmailData({to:mail})
   };
 
   const closePopup = () => {
@@ -291,14 +292,10 @@ useEffect(() => {
   };
 
 
-//////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////
-  
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //ADMIN DATA VIEW ITRATION
   let LoginHRIcon = null
   let LoginHRName = null
-  console.log(hrData)
   for (let data of hrData){
     if (data.email === token){
       LoginHRIcon = data.name[0]
@@ -364,14 +361,14 @@ useEffect(() => {
               <td className="db-item-name">{user.email}</td>
               <td className="db-item-name">{user.phoneno}</td>
               <td className="db-item-name">{user.address}</td>
-              <td><button type="button" className={`edit-button`} onClick={() => openPopup(user.id)}>Send Mail</button></td>
+              <td><button type="button" className={`edit-button`} onClick={() => openPopup(user.email)}>Send Mail</button></td>
               <Popup isOpen={isPopupOpen} onClose={closePopup}>
-                <farm className="send-mail-container">
-                  <input className="send-mail-input" type="text" name="to" placeholder="Recipient Email" onChange={handleChange} />
-                  <input className="send-mail-input" type="text" name="subject" placeholder="Subject" onChange={handleChange} />
-                  <textarea className="send-mail-textarea" cols={20} rows={4} name="body" placeholder="Email Body" onChange={handleChange}></textarea>
+                <div className="send-mail-container">
+                  <input className="send-mail-input" value={emailData.to} type="text" name="to" placeholder="Recipient Email" onChange={handleChange} />
+                  <input className="send-mail-input" value={emailData.subject} type="text" name="subject" placeholder="Subject" onChange={handleChange} />
+                  <textarea className="send-mail-textarea" value={emailData.body} cols={20} rows={4} name="body" placeholder="Email Body" onChange={handleChange}></textarea>
                   <button className="send-mail-btn" onClick={handleSendEmail}>Send Email</button>
-                </farm>
+                </div>
               </Popup>
               <td><button type="button" className={offCheckboxStatus.isChecked && offCheckboxStatus.userId === user.id ? `edit-button` : `edit-button-stop`} onClick={e => onClickAddToOnboardingSub(user.id)}>Submit</button></td>
               <td><button type="button" className="delete-button" onClick={e => onClickOffDelete(user.id)}><RiDeleteBin5Line /></button></td>
