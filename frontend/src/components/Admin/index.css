@@ -200,6 +200,7 @@ th{
 .send-mail-container{
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
 }
 .send-mail-input{
     margin-bottom: 10px;

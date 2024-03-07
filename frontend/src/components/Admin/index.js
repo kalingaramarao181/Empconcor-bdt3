@@ -25,6 +25,7 @@ const Admin = () => {
   const [role, setRole] = useState("")
   const [emailData, setEmailData] = useState({to: '', name:"", subject: '', body: ''});
   const [isPopupOpen, setPopupOpen] = useState(false);
+  const [conErr, setConErr] = useState()
   const [dataView, setDataView] = useState("APPLICATIONS")
   const token = Cookies.get("jwt_token");
   const loginStatus = Cookies.get("login_status")
@@ -266,10 +267,10 @@ useEffect(() => {
   const handleSendEmail = () => {
     axios.post('http://localhost:5000/send-email', emailData)
       .then(response => {
-        console.log(response.data);
+        setConErr("Successfully Send");
       })
       .catch(error => {
-        console.error(error);
+        setConErr("Something Wrong");
       });
     setEmailData({to:"", subject:"", body:"" })
   };
@@ -367,10 +368,11 @@ useEffect(() => {
               <td classname="conformation-icon-td">{user.accept === "confirm" ? <IoCheckmarkDoneCircleOutline className="conformation-icon-1" />: null}{user.accept === "notConfirm" ? <GiCancel  className="conformation-icon" />: null}</td>
               <Popup isOpen={isPopupOpen} onClose={closePopup}>
                 <div className="send-mail-container">
-                  <input className="send-mail-input" value={emailData.to} type="text" name="to" placeholder="Recipient Email" onChange={handleChange} />
-                  <input className="send-mail-input" value={emailData.subject} type="text" name="subject" placeholder="Subject" onChange={handleChange} />
-                  <textarea className="send-mail-textarea" value={emailData.body} cols={20} rows={4} name="body" placeholder="Email Body" onChange={handleChange}></textarea>
+                  <input className="send-mail-input" value={emailData.to} type="text" name="to" placeholder="Recipient Email" onChange={handleChange} required/>
+                  <input className="send-mail-input" value={emailData.subject} type="text" name="subject" placeholder="Subject" onChange={handleChange} required/>
+                  <textarea className="send-mail-textarea" value={emailData.body} cols={20} rows={4} name="body" placeholder="Email Body" onChange={handleChange} required></textarea>
                   <button className="send-mail-btn" onClick={handleSendEmail}>Send Email</button>
+                  {conErr ? <p>{conErr}</p> : null}
                 </div>
               </Popup>
               <td><button type="button" className={offCheckboxStatus.isChecked && offCheckboxStatus.userId === user.id ? `edit-button` : `edit-button-stop`} onClick={e => onClickAddToOnboardingSub(user.id)}>Submit</button></td>

@@ -24,8 +24,15 @@
     right: 10px;
     font-size: 20px;
     cursor: pointer;
+    margin-left: 30px;
   }
   
   .open {
     display: block;
+  }
+  .cross-red{
+    height: 30px;
+    width: 30px;
+    font-size: 30px;
+    color: red;
   }
