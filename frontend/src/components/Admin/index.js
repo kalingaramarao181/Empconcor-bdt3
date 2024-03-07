@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Popup from "../Popup";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
+import { GiCancel } from "react-icons/gi";
 
 const Admin = () => {
   const [userData, setAdminData] = useState([]);
@@ -362,8 +363,8 @@ useEffect(() => {
               <td className="db-item-name">{user.email}</td>
               <td className="db-item-name">{user.phoneno}</td>
               <td className="db-item-name">{user.address}</td>
-              <td><button type="button" className={`edit-button`} onClick={() => openPopup(user.email, user.name)}>Send Mail</button></td>
-              <td classname="conformation-icon-td">{user.accept === "confirm" ? <IoCheckmarkDoneCircleOutline />: null}</td>
+              <td><button type="button" className={`edit-button-1`} onClick={() => openPopup(user.email, user.name)}>SendMail</button></td>
+              <td classname="conformation-icon-td">{user.accept === "confirm" ? <IoCheckmarkDoneCircleOutline className="conformation-icon-1" />: null}{user.accept === "notConfirm" ? <GiCancel  className="conformation-icon" />: null}</td>
               <Popup isOpen={isPopupOpen} onClose={closePopup}>
                 <div className="send-mail-container">
                   <input className="send-mail-input" value={emailData.to} type="text" name="to" placeholder="Recipient Email" onChange={handleChange} />
@@ -455,6 +456,8 @@ useEffect(() => {
                 <th>Address</th>
                 <th>Send Mail</th>
                 <th>Status</th>
+                <th>Submit</th>
+                <th>Delete</th>
               </tr>
             {displayUserData()}
              </table>

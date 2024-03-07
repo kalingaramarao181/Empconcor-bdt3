@@ -67,6 +67,7 @@ useEffect(() => {
   };
 
   return (
+    <div className='conformation-farm-container-main'>
     <div className='conformation-farm-container'>
       <h2 className='conformation-farm-heading'>Confirmation Form</h2>
       <form className='conformation-farm-farm' onSubmit={handleSubmit}>
@@ -100,6 +101,7 @@ useEffect(() => {
         </div>
         <button  className='conformation-farm-button' type="submit">Submit</button>
       </form>
+    </div>
     </div>
   );
 };
