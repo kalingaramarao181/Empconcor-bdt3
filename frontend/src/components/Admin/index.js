@@ -5,6 +5,7 @@ import {Link} from "react-router-dom"
 import Cookies from "js-cookie";
 import { RiDeleteBin5Line } from "react-icons/ri";
 import Popup from "../Popup";
+import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 
 const Admin = () => {
   const [userData, setAdminData] = useState([]);
@@ -21,7 +22,7 @@ const Admin = () => {
   const [offCheckboxStatus, setOffCheckboxStatus] = useState({isChecked:false, userId:""})
   const [onbCheckboxStatus, setONBCheckboxStatus] = useState({isChecked:false, userId:""})
   const [role, setRole] = useState("")
-  const [emailData, setEmailData] = useState({to: '', subject: '', body: ''});
+  const [emailData, setEmailData] = useState({to: '', name:"", subject: '', body: ''});
   const [isPopupOpen, setPopupOpen] = useState(false);
   const [dataView, setDataView] = useState("APPLICATIONS")
   const token = Cookies.get("jwt_token");
@@ -273,9 +274,9 @@ useEffect(() => {
   };
 
 
-  const openPopup = (mail) => {
+  const openPopup = (mail, sendName) => {
     setPopupOpen(true);
-    setEmailData({to:mail})
+    setEmailData({to:mail, name:sendName})
   };
 
   const closePopup = () => {
@@ -361,7 +362,8 @@ useEffect(() => {
               <td className="db-item-name">{user.email}</td>
               <td className="db-item-name">{user.phoneno}</td>
               <td className="db-item-name">{user.address}</td>
-              <td><button type="button" className={`edit-button`} onClick={() => openPopup(user.email)}>Send Mail</button></td>
+              <td><button type="button" className={`edit-button`} onClick={() => openPopup(user.email, user.name)}>Send Mail</button></td>
+              <td classname="conformation-icon-td">{user.accept === "confirm" ? <IoCheckmarkDoneCircleOutline />: null}</td>
               <Popup isOpen={isPopupOpen} onClose={closePopup}>
                 <div className="send-mail-container">
                   <input className="send-mail-input" value={emailData.to} type="text" name="to" placeholder="Recipient Email" onChange={handleChange} />
@@ -451,6 +453,8 @@ useEffect(() => {
                 <th>Email</th>
                 <th>Mobile</th>
                 <th>Address</th>
+                <th>Send Mail</th>
+                <th>Status</th>
               </tr>
             {displayUserData()}
              </table>

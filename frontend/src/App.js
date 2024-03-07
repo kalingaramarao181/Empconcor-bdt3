@@ -18,6 +18,7 @@ import EmployeDashBoard from './components/EmployeDashBoard';
 import EmployeAttendance from './components/EmployeAttendance';
 import EmployeRegister from './components/EmployeRegester';
 import ITCloud from './components/ITCloud';
+import ConfirmationForm from './components/CandidateConformationFarm';
 // import FileUploadForm from './components/FileUploadFarm';
 
 
@@ -41,7 +42,7 @@ const  App = () => {
           <Route path="/ITCLOUD" exact component={ITCloud} />
           <ProtectedRoute path="/empregester" exact component={EmployeRegister} />
           <ProtectedRoute path="/empattendance" exact component={EmployeAttendance} />
-          <Route path="/send-mail" exact component={SendMail} />
+          <Route path="/candidate-conformation-farm" exact component={ConfirmationForm} />
           {/* <Route path="/profile" exact component={FileUploadForm} /> */}
         </Switch>
     </BrowserRouter>
